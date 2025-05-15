@@ -477,11 +477,12 @@ h6 {
 --------------------------------------------------------------*/
 #hero {
     width: 100%;
-    height: 130vh;
+    height: 100vh;
     background: url(../img/hero-bg.jpg) top center;
     background-size: cover;
     overflow: visible;
     position: relative;
+    padding-top: 0px;
 }
 
 @media (min-width: 1024px) {
@@ -1415,7 +1416,11 @@ h6 {
 #contact .contact-info a:hover {
     color: #1B7AC3;
 }
+#contact .contact-whatsapp i, #contact .contact-whatsapp a, #contact .contact-whatsapp h3 {
+    color: #25c862;
+}
 
+#contact .contact-whatsapp 
 #contact .contact-address,
 #contact .contact-phone,
 #contact .contact-email {
@@ -1423,7 +1428,7 @@ h6 {
 }
 
 @media (min-width: 768px) {
-
+    #contact .contact-whatsapp,
     #contact .contact-address,
     #contact .contact-phone,
     #contact .contact-email {

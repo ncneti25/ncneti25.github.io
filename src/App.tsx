@@ -20,10 +20,8 @@ aiLink.href = './assets/css/academicons.min.css';
 aiLink.rel = 'stylesheet';
 document.head.appendChild(aiLink);
 
-// Add favicon.ico to the img folder for reference
-// The favicon.ico is already present in public/ for browser use, but for documentation or asset reference, we can add it to the img folder as well.
-// If you want to use it in the UI, you can import it like:
-// import favicon from './assets/img/favicon.ico';
+// Remove any reference to favicon.jpg and ensure favicon.ico is used as the favicon
+// The favicon is set in index.html for the browser tab icon
 
 const sections = [
     'Home',

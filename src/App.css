@@ -1,5 +1,5 @@
 body {
-  background: url('./src/assets/img/hero-bg.jpg') center/cover no-repeat fixed;
+  background: url('/hero-bg.jpg') center/cover no-repeat fixed;
   min-height: 100vh;
   font-family: 'Open Sans', sans-serif;
   position: relative;

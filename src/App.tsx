@@ -1,53 +1,24 @@
-import { AppBar, Toolbar, Typography, Container, Tabs, Tab, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, useMediaQuery } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import HomeIcon from '@mui/icons-material/Home';
-import TopicIcon from '@mui/icons-material/LocalLibrary';
-import DateRangeIcon from '@mui/icons-material/DateRange';
-import GroupIcon from '@mui/icons-material/Groups';
-import PlaceIcon from '@mui/icons-material/Place';
-import AssignmentIcon from '@mui/icons-material/Assignment';
-import BusinessIcon from '@mui/icons-material/Business';
-import HotelIcon from '@mui/icons-material/Hotel';
-import ContactMailIcon from '@mui/icons-material/ContactMail';
-import UploadFileIcon from '@mui/icons-material/UploadFile';
-import StarIcon from '@mui/icons-material/Star';
-import MailIcon from '@mui/icons-material/Mail';
-import PhoneIcon from '@mui/icons-material/Phone';
-import { useTheme } from '@mui/material/styles';
 import { useState } from 'react';
 import './App.css'
 import logo from './assets/img/logo.png';
-
-// Section icons mapping
-const sectionIcons: { [key: string]: React.ReactNode } = {
-  'Home': <HomeIcon sx={{ mr: 0.5, verticalAlign: 'middle' }} fontSize="small" />,
-  'Topics': <TopicIcon sx={{ mr: 0.5, verticalAlign: 'middle' }} fontSize="small" />,
-  'Important Dates': <DateRangeIcon sx={{ mr: 0.5, verticalAlign: 'middle' }} fontSize="small" />,
-  'Committees': <GroupIcon sx={{ mr: 0.5, verticalAlign: 'middle' }} fontSize="small" />,
-  'Venue': <PlaceIcon sx={{ mr: 0.5, verticalAlign: 'middle' }} fontSize="small" />,
-  'Registration': <AssignmentIcon sx={{ mr: 0.5, verticalAlign: 'middle' }} fontSize="small" />,
-  'Sponsors': <BusinessIcon sx={{ mr: 0.5, verticalAlign: 'middle' }} fontSize="small" />,
-  'Accommodations': <HotelIcon sx={{ mr: 0.5, verticalAlign: 'middle' }} fontSize="small" />,
-  'Contact': <ContactMailIcon sx={{ mr: 0.5, verticalAlign: 'middle' }} fontSize="small" />,
-  'Submit Paper': <UploadFileIcon sx={{ mr: 0.5, verticalAlign: 'middle' }} fontSize="small" />,
-};
+// Fix hotel image imports to match actual file paths and extensions
 import lallamaounaImg from './assets/img/hotels/lallamaouna.jpg';
 import lallamaounaPrices from './assets/img/hotels/lallamaouna-prices.svg';
 import elBarakaImg from './assets/img/hotels/el-baraka.png';
 import elBarakaPrices from './assets/img/hotels/elbaraka-prices.svg';
-import SchoolIcon from '@mui/icons-material/School';
-
-import PsychologyIcon from '@mui/icons-material/Psychology';
-
-import CastForEducationIcon from '@mui/icons-material/CastForEducation';
-import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
-
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
 // Add Open Sans font import
 const fontLink = document.createElement('link');
 fontLink.href = 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap';
 fontLink.rel = 'stylesheet';
 document.head.appendChild(fontLink);
+
+// Add Academicons CSS import for Overleaf icon
+const aiLink = document.createElement('link');
+aiLink.href = './assets/css/academicons.min.css';
+aiLink.rel = 'stylesheet';
+document.head.appendChild(aiLink);
 
 const sections = [
   'Home',
@@ -71,65 +42,92 @@ function SectionContent({ section }: { section: string }) {
     case 'Home':
       const [showVideo, setShowVideo] = useState(false);
       return (
-        <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 2, position: 'relative', minHeight: 500 }}>
+        <div className="w-100 d-flex flex-column align-items-center mt-2 position-relative"
+          style={{
+            // Remove fixed minHeight to eliminate trailing space
+            minHeight: undefined,
+            // Optionally, set a small minHeight only for large screens
+            ...(window.innerWidth > 768 ? { minHeight: '60vh' } : {}),
+          }}
+        >
           {/* Hero background image */}
-          <Box sx={{
+          <div style={{
             position: 'absolute',
             top: 0,
             left: 0,
             width: '100%',
             height: '100%',
             zIndex: 0,
-            background: 'url("./assets/img/hero-bg.jpg") center/cover no-repeat',
-            borderRadius: 3,
+            background: 'url(./assets/img/hero-bg.jpg) center/cover no-repeat',
+            borderRadius: 12,
           }} />
           {/* Logo above intro */}
-          <Box sx={{ zIndex: 1, mt: 2, mb: 2 }}>
+          <div className="z-1 mt-2 mb-2">
             <img src={logo} alt="NCNETI'25 Logo" style={{ height: 100, width: 'auto', filter: 'drop-shadow(0 2px 8px #0008)' }} />
-          </Box>
-          <Typography variant="h5" gutterBottom sx={{ zIndex: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
-            <HomeIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="medium" />
-            Second National Conference on New Educational Technologies and Informatics
-          </Typography>
-          <Typography variant="body1" gutterBottom sx={{ zIndex: 1, fontFamily: 'Open Sans, sans-serif !important' }}>
-            October 1-2, 2025 — LabSTIC Laboratory, University of 8 Mai 1945, Guelma, Algeria
-          </Typography>
-          <Typography variant="body2" sx={{ mt: 2, textAlign: 'center', zIndex: 1, fontFamily: 'Open Sans, sans-serif !important' }}>
-            The LabSTIC Laboratory at the University of 8 Mai 1945, Guelma, is pleased to announce the second edition of NCNETI'25, taking place on October 1-2, 2025. This national conference provides a platform for researchers, academics, and doctoral students to present their latest research and advancements in new educational technologies and informatics. Participants will have the opportunity to share theoretical insights, innovative methodologies, and practical applications, fostering collaboration and knowledge exchange within the academic community.
-          </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 5, gap: 2, zIndex: 1 }}>
+          </div>
+          <h5 className="z-1 d-flex align-items-center gap-2">
+            {/* <i className="fa-solid fa-house" style={{ fontSize: 22, color: '#40cfff' }}></i> */}
+            The Second National Conference on New Educational Technologies and Informatics
+          </h5>
+          <p className="z-1" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+            <i className="fa fa-calendar-alt" style={{ fontSize: 16, color: '#40cfff' }}></i> October 1-2, 2025 at the&nbsp;
+            <a
+              href="https://labstic.univ-guelma.dz/"
+              target="_blank"
+              rel="noopener noreferrer"
+                      title="LabSTIC Laboratory, University of 8 Mai 1945, Guelma, Algeria"
+              style={{ textDecoration: 'underline dotted', cursor: 'pointer', color: '#40cfff' }}
+            >
+              LabSTIC Laboratory, University of Guelma
+            </a>
+          </p>
+          <p className="z-1 text-center" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+            The LabSTIC Laboratory is pleased to announce the second edition of NCNETI'25, taking place on October 1-2, 2025. This national conference provides a platform for researchers, academics, and doctoral students to present their latest research and advancements in new educational technologies and informatics. Participants will have the opportunity to share theoretical insights, innovative methodologies, and practical applications, fostering collaboration and knowledge exchange within the academic community.
+          </p>
+          <div className="d-flex flex-column align-items-center mt-3 gap-1 z-1">
             {/* Play Button */}
-            <Box
-              sx={{
+            <div
+              style={{
                 width: 64,
                 height: 64,
-                bgcolor: '#fc466b',
+                background: 'rgba(252,70,107,0.55)',
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: 3,
+                boxShadow: '0 2px 12px #0006',
                 cursor: 'pointer',
-                transition: 'background 0.2s',
-                '&:hover': { bgcolor: '#d72660' },
+                transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
+                backdropFilter: 'blur(2px)',
+                margin: '0 0 8px 0',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = 'rgba(252,70,107,0.75)';
+                e.currentTarget.style.transform = 'scale(1.08)';
+                e.currentTarget.style.boxShadow = '0 4px 24px #fc466b88';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'rgba(252,70,107,0.55)';
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 2px 12px #0006';
               }}
               onClick={() => setShowVideo(true)}
             >
               <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-                <circle cx="18" cy="18" r="18" fill="#fc466b" />
+                <circle cx="18" cy="18" r="18" fill="#fc466b" fillOpacity="0.7" />
                 <polygon points="14,11 27,18 14,25" fill="#fff" />
               </svg>
-            </Box>
+            </div>
             {/* Floating YouTube Embed */}
             {showVideo && (
-              <Box
-                sx={{
+              <div
+                style={{
                   position: 'fixed',
                   top: 0,
                   left: 0,
                   width: '100vw',
                   height: '100vh',
-                  bgcolor: 'rgba(0,0,0,0.7)',
+                  background: 'rgba(0,0,0,0.7)',
                   zIndex: 2000,
                   display: 'flex',
                   alignItems: 'center',
@@ -137,7 +135,7 @@ function SectionContent({ section }: { section: string }) {
                 }}
                 onClick={() => setShowVideo(false)}
               >
-                <Box sx={{ position: 'relative', width: '90vw', maxWidth: 600, aspectRatio: '16/9', bgcolor: '#000', borderRadius: 2, boxShadow: 5 }} onClick={e => e.stopPropagation()}>
+                <div style={{ position: 'relative', width: '90vw', maxWidth: 600, aspectRatio: '16/9', background: '#000', borderRadius: 8, boxShadow: '0 2px 8px #0008' }} onClick={e => e.stopPropagation()}>
                   <iframe
                     width="100%"
                     height="100%"
@@ -148,54 +146,81 @@ function SectionContent({ section }: { section: string }) {
                     allowFullScreen
                     style={{ borderRadius: 8 }}
                   />
-                  <Box onClick={() => setShowVideo(false)} sx={{ position: 'absolute', top: 8, right: 8, cursor: 'pointer', color: '#fff', fontSize: 28, zIndex: 10 }}>
+                  <div onClick={() => setShowVideo(false)} style={{ position: 'absolute', top: 8, right: 8, cursor: 'pointer', color: '#fff', fontSize: 28, zIndex: 10 }}>
                     ×
-                  </Box>
-                </Box>
-              </Box>
+                  </div>
+                </div>
+              </div>
             )}
             {/* Call for Papers Button */}
-            <a href="/src/assets/pdf/NCNETI25_CallForPaper.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', width: '100%' }}>
-              <Box sx={{ mt: 2, bgcolor: '#3f5efb', color: '#fff', px: 4, py: 2, borderRadius: 2, fontWeight: 600, fontSize: 20, boxShadow: 3, textAlign: 'center', width: 260, transition: 'background 0.2s', '&:hover': { bgcolor: '#2a3eb1' }, cursor: 'pointer' }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: 8, verticalAlign: 'middle' }}><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-7V3.5L18.5 9H13z"/></svg>
+            <a href="/src/assets/pdf/NCNETI25_CallForPaper.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', width: 'auto' }}>
+              <div style={{
+                marginTop: 8,
+                marginBottom: 0,
+                background: '#3f5efb',
+                color: '#fff',
+                padding: '6px 18px',
+                borderRadius: 24,
+                fontWeight: 600,
+                fontSize: 15,
+                boxShadow: '0 2px 8px #0008',
+                textAlign: 'center',
+                minWidth: 0,
+                width: 'auto',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                transition: 'background 0.2s, box-shadow 0.2s',
+                cursor: 'pointer',
+              }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = '#3246d3';
+                  e.currentTarget.style.boxShadow = '0 4px 16px #3f5efb55';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = '#3f5efb';
+                  e.currentTarget.style.boxShadow = '0 2px 8px #0008';
+                }}
+              >
+                <i className="fa-solid fa-upload" style={{ marginRight: 8, verticalAlign: 'middle', fontSize: 16 }}></i>
                 Call for Papers
-              </Box>
+              </div>
             </a>
-          </Box>
-        </Box>
+          </div>
+        </div>
       );
     case 'Topics':
-      // Define topics with icons
+      // Define topics with Bootstrap Icons
       const topicsCol1 = [
-        { text: 'Smart Learning Environnment', icon: <HomeIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'Machine Learning & Big Data in Education', icon: <TopicIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'Internet of Things (IoT) and Its Use in Education', icon: <BusinessIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'Machine Learning Applications in Healthcare', icon: <StarIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'Artificial Intelligence & Its Application', icon: <AssignmentIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'Computer Vision & Pattern', icon: <GroupIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'Educational Technology', icon: <DateRangeIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'E-learning, Mobile Learning and Intelligent Tutoring Systems', icon: <UploadFileIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'E-Government and E-business', icon: <BusinessIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'Intelligent and Decision Support Systems', icon: <GroupIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
+        { text: 'Smart Learning Environment', icon: <i className="fa-solid fa-house" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'Machine Learning & Big Data in Education', icon: <i className="fa-solid fa-microchip" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'Internet of Things (IoT) and Its Use in Education', icon: <i className="fa-solid fa-wifi" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'Machine Learning Applications in Healthcare', icon: <i className="fa-solid fa-heart-pulse" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'Artificial Intelligence & Its Application', icon: <i className="fa-solid fa-robot" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'Computer Vision & Pattern', icon: <i className="fa-solid fa-eye" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'Educational Technology', icon: <i className="fa-solid fa-book-open" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'E-learning, Mobile Learning and Intelligent Tutoring Systems', icon: <i className="fa-solid fa-tablet-screen-button" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'E-Government and E-business', icon: <i className="fa-solid fa-building" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'Intelligent and Decision Support Systems', icon: <i className="fa-solid fa-chart-bar" style={{ color: '#40cfff', marginRight: 8 }}></i> },
       ];
       const topicsCol2 = [
-        { text: 'Health Informatics', icon: <StarIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'Software Systems, Architectures, Applications and Tools', icon: <AssignmentIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'Big Data Analytics', icon: <TopicIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'Natural Language Processing', icon: <HomeIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'Social and Green Computing', icon: <BusinessIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'AI for Remote Monitoring and Telemedicine', icon: <AssignmentIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'Human-Computer Interaction', icon: <GroupIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'IT for Agriculture, Tourism and Natural Resource Management', icon: <DateRangeIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
-        { text: 'كما نرحب بكل المشاركات باللغة العربية والخاصة بتطبيقات الاعلام الالي في ميادين اللسانيات، اللغات، المحاسبة ، الاعلام والاتصال وغيرها...', icon: <StarIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="small" /> },
+        { text: 'Health Informatics', icon: <i className="fa-solid fa-heart-pulse" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'Software Systems, Architectures, Applications and Tools', icon: <i className="fa-solid fa-diagram-project" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'Big Data Analytics', icon: <i className="fa-solid fa-chart-line" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'Natural Language Processing', icon: <i className="fa-solid fa-language" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'Social and Green Computing', icon: <i className="fa-solid fa-tree" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'AI for Remote Monitoring and Telemedicine', icon: <i className="fa-solid fa-video" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'Human-Computer Interaction', icon: <i className="fa-solid fa-user" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'IT for Agriculture, Tourism and Natural Resource Management', icon: <i className="fa-solid fa-globe" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+        { text: 'كما نرحب بكل المشاركات باللغة العربية والخاصة بتطبيقات الاعلام الالي في ميادين اللسانيات، اللغات، المحاسبة ، الاعلام والاتصال وغيرها...', icon: <i className="fa-solid fa-language" style={{ color: '#40cfff', marginRight: 8 }}></i> },
       ];
       return (
-        <Box>
-          <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <TopicIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="medium" />
+        <div>
+          <h4 className="d-flex align-items-center gap-2 mb-3">
+            <i className="fa-solid fa-book-open" style={{ fontSize: 22, color: '#40cfff' }}></i>
             Topics of Interest
-          </Typography>
-          <Box sx={{ display: 'flex', gap: 6, flexWrap: 'wrap', maxWidth: 900 }}>
+          </h4>
+          <div className="d-flex flex-wrap gap-5" style={{ maxWidth: 900 }}>
             <ul style={{ textAlign: 'left', flex: 1, minWidth: 250, margin: 0, paddingLeft: 24 }}>
               {topicsCol1.map((topic, idx) => (
                 <li key={idx} style={{ display: 'flex', alignItems: 'center', marginBottom: 8 }}>
@@ -212,101 +237,96 @@ function SectionContent({ section }: { section: string }) {
                 </li>
               ))}
             </ul>
-          </Box>
-        </Box>
+          </div>
+        </div>
       );
     case 'Important Dates':
-      // New set of icons and colors for each date
+      // New set of icons and colors for each date using Bootstrap Icons
       const importantDates = [
         {
-          icon: <UploadFileIcon sx={{ color: '#fc466b', mr: 1 }} fontSize="medium" />,
+          icon: <i className="fa-solid fa-upload" style={{ color: '#fc466b', marginRight: 8, fontSize: 20 }}></i>,
           text: 'Submission deadline:',
           date: 'July 15, 2025',
           color: '#fc466b',
         },
         {
-          icon: <StarIcon sx={{ color: '#f7971e', mr: 1 }} fontSize="medium" />,
+          icon: <i className="fa-solid fa-star" style={{ color: '#f7971e', marginRight: 8, fontSize: 20 }}></i>,
           text: 'Notification deadline:',
           date: 'August 15, 2025',
           color: '#f7971e',
         },
         {
-          icon: <AssignmentIcon sx={{ color: '#3f5efb', mr: 1 }} fontSize="medium" />,
+          icon: <i className="fa-solid fa-clipboard-check" style={{ color: '#3f5efb', marginRight: 8, fontSize: 20 }}></i>,
           text: 'Camera-ready deadline:',
           date: 'September 1, 2025',
           color: '#3f5efb',
         },
         {
-          icon: <BusinessCenterIcon sx={{ color: '#11998e', mr: 1 }} fontSize="medium" />,
+          icon: <i className="fa-solid fa-award" style={{ color: '#11998e', marginRight: 8, fontSize: 20 }}></i>,
           text: 'Registration deadline:',
           date: 'September 5, 2025',
           color: '#11998e',
         },
         {
-          icon: <DateRangeIcon sx={{ color: '#40cfff', mr: 1 }} fontSize="medium" />,
+          icon: <i className="fa-solid fa-calendar-days" style={{ color: '#40cfff', marginRight: 8, fontSize: 20 }}></i>,
           text: 'Conference dates:',
           date: 'October 1-2, 2025',
           color: '#40cfff',
         },
       ];
       return (
-        <Box>
-          <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <DateRangeIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="medium" />
+        <div>
+          <h4 className="d-flex align-items-center gap-2 mb-3">
+            <i className="fa-solid fa-calendar-days" style={{ fontSize: 22, color: '#40cfff' }}></i>
             Important Dates
-          </Typography>
+          </h4>
           <ul style={{ textAlign: 'left', maxWidth: 540, margin: '0 auto', padding: 0, listStyle: 'none' }}>
             {importantDates.map((item, idx) => (
               <li key={idx} style={{ display: 'flex', alignItems: 'center', marginBottom: 18, color: item.color }}>
                 {item.icon}
                 <span style={{ fontWeight: 400, fontSize: 15, minWidth: 170, display: 'inline-block', color: item.color, marginRight: 6 }}>{item.text}</span>
-                <span style={{ fontWeight: 800, fontSize: 22, color: item.color }}>{item.date}</span>
+                <span style={{ fontWeight: 700, fontSize: 15, color: item.color }}>{item.date}</span>
               </li>
             ))}
           </ul>
-        </Box>
+        </div>
       );
     case 'Committees':
       return (
-        <Box>
-          <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <GroupIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="medium" />
+        <div>
+          <h4 className="d-flex align-items-center gap-2">
+            <i className="fa-solid fa-users" style={{ fontSize: 18, color: '#40cfff' }}></i>
             Committees
-          </Typography>
-          <Box sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            gap: 3,
-            alignItems: 'flex-start',
-            flexWrap: 'wrap',
-          }}>
-            {/* Left column: first three boxes */}
-            <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0 }}>
-              {/* Honorary Chairman */}
-              <Box sx={{ background: 'rgba(255,255,255,0.08)', borderRadius: 3, boxShadow: 3, p: 3 }}>
-                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', color: '#e67e22', fontWeight: 700 }}>
-                  <StarIcon sx={{ mr: 1, verticalAlign: 'middle', color: '#e67e22' }} fontSize="small" />Honorary Chairmen
-                </Typography>
-                          <ul style={{ textAlign: 'left', maxWidth: 700, margin: 0, paddingLeft: 24 }}>
-                              <li>Pr. Salah ELLAGOUNE, Rector of Guelma University</li>
-                              <li>Pr. Athmane MEDDOUR, Dean of the MISM Faculty</li>
-                              <li>Pr. Hamid SERIDI, Head of the LabSTIC Laboratory</li>
-                          </ul>
-              </Box>
+          </h4>
+          {/* Honorary Chairmen in a single full-width box */}
+          <div className="mb-3" style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1rem', color: '#fff' }}>
+            <h6 className="d-flex align-items-center" style={{ color: '#e67e22', fontWeight: 700 }}>
+              <i className="fa-solid fa-star" style={{ marginRight: 8, color: '#e67e22' }}></i>Honorary Chairmen
+            </h6>
+            <ul style={{ textAlign: 'left', maxWidth: 700, margin: 0, paddingLeft: 24 }}>
+              <li>Pr. Salah ELLAGOUNE, Rector of Guelma University</li>
+              <li>Pr. Athmane MEDDOUR, Dean of the MISM Faculty</li>
+              <li>Pr. Hamid SERIDI, Head of the LabSTIC Laboratory</li>
+            </ul>
+          </div>
+          {/* Four other boxes in two columns */}
+          <div className="d-flex flex-column flex-md-row gap-3 align-items-start flex-wrap">
+            {/* Left column: Organization Chair & Organization Committee Members */}
+            <div className="flex-1 d-flex flex-column gap-3" style={{ minWidth: 0 }}>
               {/* Organization Chair */}
-              <Box sx={{ background: 'rgba(255,255,255,0.08)', borderRadius: 3, boxShadow: 3, p: 3 }}>
-                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', color: '#40cfff', fontWeight: 700 }}>
-                  <BusinessCenterIcon sx={{ mr: 1, verticalAlign: 'middle', color: '#40cfff' }} fontSize="small" />Organization Chair
-                </Typography>
+              <div style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1rem', color: '#fff' }}>
+                <h6 className="d-flex align-items-center" style={{ color: '#40cfff', fontWeight: 700 }}>
+                  <i className="fa-solid fa-award" style={{ marginRight: 8, color: '#40cfff' }}></i>Organization Chair
+                </h6>
                 <ul style={{ textAlign: 'left', maxWidth: 700, margin: 0, paddingLeft: 24 }}>
                   <li>Dr. Riad BOURBIA</li>
                 </ul>
-              </Box>
+              </div>
               {/* Organization Committee Members */}
-              <Box sx={{ background: 'rgba(255,255,255,0.08)', borderRadius: 3, boxShadow: 3, p: 3 }}>
-                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', color: '#40cfff', fontWeight: 700 }}>
-                  <BusinessCenterIcon sx={{ mr: 1, verticalAlign: 'middle', color: '#40cfff' }} fontSize="small" />Organization Committee Members
-                </Typography>
+              <div style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1rem', color: '#fff' }}>
+                <h6 className="d-flex align-items-center" style={{ color: '#40cfff', fontWeight: 700 }}>
+                  <i className="fa-solid fa-award" style={{ marginRight: 8, color: '#40cfff' }}></i>Organization Committee Members
+                </h6>
                 <ul style={{ textAlign: 'left', maxWidth: 700, margin: 0, paddingLeft: 24 }}>
                   <li>Dr. Ali SERIDI</li>
                   <li>Dr. Rochdi BOUDJEHEM</li>
@@ -318,26 +338,26 @@ function SectionContent({ section }: { section: string }) {
                   <li>Miss. Madiha KHAROUBI</li>
                   <li>Mr. Abdelbacet BRAHMIA</li>
                 </ul>
-              </Box>
-            </Box>
-            {/* Right column: last two boxes */}
-            <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0 }}>
+              </div>
+            </div>
+            {/* Right column: Program Committee Chairs & Program Committee Members */}
+            <div className="flex-1 d-flex flex-column gap-3" style={{ minWidth: 0 }}>
               {/* Program Committee Chair */}
-              <Box sx={{ background: 'rgba(255,255,255,0.08)', borderRadius: 3, boxShadow: 3, p: 3 }}>
-                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', color: '#40cfff', fontWeight: 700 }}>
-                    <PsychologyIcon sx={{ mr: 1, verticalAlign: 'middle', color: '#40cfff' }} fontSize="small" />Program Committee Chairs
-                </Typography>
+              <div style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1rem', color: '#fff' }}>
+                <h6 className="d-flex align-items-center" style={{ color: '#40cfff', fontWeight: 700 }}>
+                  <i className="fa-solid fa-user-tie" style={{ marginRight: 8, color: '#40cfff' }}></i>Program Committee Chairs
+                </h6>
                 <ul style={{ textAlign: 'left', maxWidth: 700, margin: 0, paddingLeft: 24 }}>
                   <li>Pr. Yacine LAFIFI</li>
                   <li>Dr. Safia BENDJEBAR</li>
                   <li>Dr. Zohra MEHENAOUI</li>
                 </ul>
-              </Box>
+              </div>
               {/* Program Committee Members */}
-              <Box sx={{ background: 'rgba(255,255,255,0.08)', borderRadius: 3, boxShadow: 3, p: 3 }}>
-                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', color: '#40cfff', fontWeight: 700 }}>
-                  <PsychologyIcon sx={{ mr: 1, verticalAlign: 'middle', color: '#40cfff' }} fontSize="small" />Program Committee Members
-                </Typography>
+              <div style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1rem', color: '#fff' }}>
+                <h6 className="d-flex align-items-center" style={{ color: '#40cfff', fontWeight: 700 }}>
+                  <i className="fa-solid fa-user-tie" style={{ marginRight: 8, color: '#40cfff' }}></i>Program Committee Members
+                </h6>
                 <ul style={{ textAlign: 'left', maxWidth: 700, margin: 0, paddingLeft: 24 }}>
                   <li>Abdelkrim Amirat (Souk Ahras University)</li>
                   <li>Abdessamed Ghomari (ESI, Algiers)</li>
@@ -375,32 +395,29 @@ function SectionContent({ section }: { section: string }) {
                   <li>Yamina Bordjiba (Guelma University)</li>
                   <li>Zineddine Kouahla (Guelma University)</li>
                 </ul>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
+              </div>
+            </div>
+          </div>
+        </div>
       );
     case 'Venue':
       return (
-        <Box>
-          <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <PlaceIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="medium" />
+        <div>
+          <h4 className="d-flex align-items-center gap-2">
+            <i className="fa-solid fa-location-dot" style={{ fontSize: 18, color: '#40cfff' }}></i>
             Conference Venue
-          </Typography>
-          <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 4,
+          </h4>
+          <div className="d-flex flex-column gap-4" style={{
             background: 'rgba(30, 34, 44, 0.7)',
-            borderRadius: 3,
-            boxShadow: 4,
+            borderRadius: 12,
+            boxShadow: '0 2px 8px #0008',
             overflow: 'hidden',
-            mb: 2,
-            p: { xs: 2, md: 3 },
             alignItems: 'center',
+            padding: '1rem', // Use valid style property
+            marginBottom: '0.5rem', // Use valid style property
           }}>
             {/* Map Box */}
-            <Box sx={{ width: '100%', maxWidth: 700, minHeight: 240, bgcolor: '#181a20', borderRadius: 2, boxShadow: 2, overflow: 'hidden', mb: 2 }}>
+            <div style={{ width: '100%', maxWidth: 700, minHeight: 240, background: '#181a20', borderRadius: 8, boxShadow: '0 2px 8px #0008', overflow: 'hidden', marginBottom: '0.5rem' }}>
               <iframe
                 src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=University%208%20May%201945,%20Guelma,%20Algeria+(Conference%20Room)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                 frameBorder="0"
@@ -408,127 +425,101 @@ function SectionContent({ section }: { section: string }) {
                 allowFullScreen
                 title="University of 8 Mai 1945 Guelma Map"
               />
-            </Box>
+            </div>
             {/* Venue Info Box */}
-            <Box sx={{ width: '100%', maxWidth: 700, bgcolor: 'rgba(255,255,255,0.04)', borderRadius: 2, boxShadow: 2, p: { xs: 2, md: 3 }, color: '#fff' }}>
-              <Typography variant="h5" sx={{ fontWeight: 700, color: '#40cfff', mb: 1 }}>
+            <div style={{ width: '100%', maxWidth: 700, background: 'rgba(255,255,255,0.04)', borderRadius: 8, boxShadow: '0 2px 8px #0008', padding: '1rem', color: '#fff' }}>
+              <h5 style={{ fontWeight: 700, color: '#40cfff', marginBottom: '0.5rem' }}>
                 University of 8 Mai 1945 Guelma
-              </Typography>
-              <Typography variant="body1" sx={{ color: '#fff', fontSize: 16, lineHeight: 1.7 }}>
+              </h5>
+              <p style={{ color: '#fff', fontSize: 16, lineHeight: 1.7 }}>
                 University of 8 Mai 1945 Guelma (UGUELMA) is a large (uniRank enrollment range: 15,000-19,999 students) coeducational Algerian higher education institution that offers courses and programs leading to officially recognized higher education degrees such as bachelor's degrees, master's degrees and doctorate degrees in several areas of study. This 37-year-old Algerian higher-education institution has a selective admission policy based on students' past academic records and grades. The admission rate range is 50-60% making this Algerian higher education organization an averagely selective institution. International students are welcome to apply for enrollment. UGUELMA also provides several academic and non-academic facilities and services to students including a library, housing, sports facilities, financial aids and/or scholarships, study abroad and exchange programs, online courses and distance learning opportunities, as well as administrative services.
-              </Typography>
-            </Box>
-          </Box>
-        </Box>
+              </p>
+            </div>
+          </div>
+        </div>
       );
     case 'Registration':
       return (
         <>
-          <Box>
-            <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <AssignmentIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="medium" />
+          <div>
+            <h4 className="d-flex align-items-center gap-2">
+              <i className="fa-solid fa-clipboard-check" style={{ fontSize: 18, color: '#40cfff' }}></i>
               Registration & Fees
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 2 }}>
+            </h4>
+            <p style={{ marginBottom: '1rem' }}>
               Participation Fees include: Admission to all technical sessions, refreshments during breaks and launches, conference materials, and social program. The conference fees do not include accommodation.
-            </Typography>
-            <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap', mb: 3, justifyContent: 'center' }}>
+            </p>
+            <div className="d-flex gap-3 flex-wrap" style={{ marginBottom: '1.5rem', justifyContent: 'center' }}>
               {/* Researcher On-site */}
-              <Box sx={{
+              <div style={{
                 flex: '1 1 180px',
                 minWidth: 180,
                 maxWidth: 220,
                 transition: 'transform 0.4s cubic-bezier(.4,2,.6,1)',
                 cursor: 'pointer',
-                '&:hover': {
-                  zIndex: 2,
-                  transform: 'scale(2.1) rotate(-2deg)',
-                  boxShadow: 12,
-                },
               }}>
-                <Box sx={{ bgcolor: '#11998e', color: '#fff', borderRadius: 2, p: 3, textAlign: 'center', boxShadow: 3, fontWeight: 600, fontSize: 18 }}>
-                  <SchoolIcon sx={{ mb: -0.5, mr: 1 }} fontSize="small" />Researcher<br />
-                  <Typography variant="h5" sx={{ fontWeight: 700, mt: 1 }}>10000.00 DA</Typography>
-                  <Typography variant="caption" sx={{ fontStyle: 'italic', fontSize: 14 }}>On-site</Typography>
-                </Box>
-              </Box>
+                <div style={{ background: '#11998e', color: '#fff', borderRadius: 8, padding: '1rem', textAlign: 'center', boxShadow: '0 2px 8px #0008', fontWeight: 600, fontSize: 18 }}>
+                  <i className="fa-solid fa-user-graduate" style={{ marginRight: 6, fontSize: 18 }}></i>Researcher<br />
+                  <div style={{ fontWeight: 700, marginTop: 8, fontSize: 22 }}>10000.00 DA</div>
+                  <div style={{ fontStyle: 'italic', fontSize: 14 }}>On-site</div>
+                </div>
+              </div>
               {/* Student On-site */}
-              <Box sx={{
+              <div style={{
                 flex: '1 1 180px',
                 minWidth: 180,
                 maxWidth: 220,
                 transition: 'transform 0.4s cubic-bezier(.4,2,.6,1)',
                 cursor: 'pointer',
-                '&:hover': {
-                  zIndex: 2,
-                  transform: 'scale(2.1) rotate(-2deg)',
-                  boxShadow: 12,
-                },
               }}>
-                <Box sx={{ bgcolor: '#fc466b', color: '#fff', borderRadius: 2, p: 3, textAlign: 'center', boxShadow: 3, fontWeight: 600, fontSize: 18 }}>
-                  <CastForEducationIcon sx={{ mb: -0.5, mr: 1 }} fontSize="small" />Student<br />
-                  <Typography variant="h5" sx={{ fontWeight: 700, mt: 1 }}>5000.00 DA</Typography>
-                  <Typography variant="caption" sx={{ fontStyle: 'italic', fontSize: 14 }}>On-site</Typography>
-                </Box>
-              </Box>
+                <div style={{ background: '#fc466b', color: '#fff', borderRadius: 8, padding: '1rem', textAlign: 'center', boxShadow: '0 2px 8px #0008', fontWeight: 600, fontSize: 18 }}>
+                  <i className="fa-solid fa-user" style={{ marginRight: 6, fontSize: 18 }}></i>Student<br />
+                  <div style={{ fontWeight: 700, marginTop: 8, fontSize: 22 }}>5000.00 DA</div>
+                  <div style={{ fontStyle: 'italic', fontSize: 14 }}>On-site</div>
+                </div>
+              </div>
               {/* Researcher Online */}
-              <Box sx={{
+              <div style={{
                 flex: '1 1 180px',
                 minWidth: 180,
                 maxWidth: 220,
                 transition: 'transform 0.4s cubic-bezier(.4,2,.6,1)',
                 cursor: 'pointer',
-                '&:hover': {
-                  zIndex: 2,
-                  transform: 'scale(2.1) rotate(-2deg)',
-                  boxShadow: 12,
-                },
               }}>
-                <Box sx={{ bgcolor: '#f7971e', color: '#fff', borderRadius: 2, p: 3, textAlign: 'center', boxShadow: 3, fontWeight: 600, fontSize: 18 }}>
-                  <SchoolIcon sx={{ mb: -0.5, mr: 1 }} fontSize="small" />Researcher<br />
-                  <Typography variant="h5" sx={{ fontWeight: 700, mt: 1 }}>6000.00 DA</Typography>
-                  <Typography variant="caption" sx={{ fontStyle: 'italic', fontSize: 14 }}>Online</Typography>
-                </Box>
-              </Box>
+                <div style={{ background: '#f7971e', color: '#fff', borderRadius: 8, padding: '1rem', textAlign: 'center', boxShadow: '0 2px 8px #0008', fontWeight: 600, fontSize: 18 }}>
+                  <i className="fa-solid fa-user-graduate" style={{ marginRight: 6, fontSize: 18 }}></i>Researcher<br />
+                  <div style={{ fontWeight: 700, marginTop: 8, fontSize: 22 }}>6000.00 DA</div>
+                  <div style={{ fontStyle: 'italic', fontSize: 14 }}>Online</div>
+                </div>
+              </div>
               {/* Student Online */}
-              <Box sx={{
+              <div style={{
                 flex: '1 1 180px',
                 minWidth: 180,
                 maxWidth: 220,
                 transition: 'transform 0.4s cubic-bezier(.4,2,.6,1)',
                 cursor: 'pointer',
-                '&:hover': {
-                  zIndex: 2,
-                  transform: 'scale(2.1) rotate(-2deg)',
-                  boxShadow: 12,
-                },
               }}>
-                <Box sx={{ bgcolor: '#3f5efb', color: '#fff', borderRadius: 2, p: 3, textAlign: 'center', boxShadow: 3, fontWeight: 600, fontSize: 18 }}>
-                  <CastForEducationIcon sx={{ mb: -0.5, mr: 1 }} fontSize="small" />Student<br />
-                  <Typography variant="h5" sx={{ fontWeight: 700, mt: 1 }}>3000.00 DA</Typography>
-                  <Typography variant="caption" sx={{ fontStyle: 'italic', fontSize: 14 }}>Online</Typography>
-                </Box>
-              </Box>
-            </Box>
-            <Typography variant="body2" sx={{ mt: 2 }}>
+                <div style={{ background: '#3f5efb', color: '#fff', borderRadius: 8, padding: '1rem', textAlign: 'center', boxShadow: '0 2px 8px #0008', fontWeight: 600, fontSize: 18 }}>
+                  <i className="fa-solid fa-user" style={{ marginRight: 6, fontSize: 18 }}></i>Student<br />
+                  <div style={{ fontWeight: 700, marginTop: 8, fontSize: 22 }}>3000.00 DA</div>
+                  <div style={{ fontStyle: 'italic', fontSize: 14 }}>Online</div>
+                </div>
+              </div>
+            </div>
+            <p style={{ marginTop: '1rem' }}>
               * Students must provide an official certificate of their student status at the moment of registration.
-            </Typography>
-          </Box>
+            </p>
+          </div>
           {/* Accommodations box at the same level as Registration & Fees */}
-          <Box sx={{ width: '100%', background: 'rgba(30, 34, 44, 0.7)', backdropFilter: 'blur(12px)', borderRadius: 4, boxShadow: 6, color: '#fff', p: { xs: 2, sm: 4 }, mt: 5 }}>
-            <Typography variant="h4" gutterBottom align="center" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
-              <HotelIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="medium" />
+          <div style={{ width: '100%', background: 'rgba(30, 34, 44, 0.7)', backdropFilter: 'blur(12px)', borderRadius: 12, boxShadow: '0 2px 8px #0008', color: '#fff', padding: '1rem', marginTop: '2rem' }}>
+            <h4 className="text-center d-flex align-items-center justify-content-center gap-2">
+              <i className="fa-solid fa-building" style={{ fontSize: 18, color: '#40cfff' }}></i>
               Accommodations
-            </Typography>
-            <Box sx={{
-              width: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 4,
-              mt: 2,
-            }}>
+            </h4>
+            <div className="d-flex flex-column gap-4" style={{ marginTop: '1rem' }}>
               {/* Lalla Maouna Hotel */}
-              <Box sx={{ width: '100%', mb: 0, background: 'rgba(255,255,255,0.08)', borderRadius: 3, boxShadow: 3, p: { xs: 2, sm: 3 } }}>
+              <div style={{ width: '100%', marginBottom: 0, background: 'rgba(255,255,255,0.08)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1rem' }}>
                 <h4 style={{ lineHeight: '60px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', textAlign: 'center' }}>
                   <img src={lallamaounaImg} alt="Lalla Maouna Hotel" height={60} style={{ borderRadius: 8, marginRight: 12 }} />
                   <strong>Lalla Maouna Hotel</strong>
@@ -543,9 +534,9 @@ function SectionContent({ section }: { section: string }) {
                   <strong>Rooms are equipped with:</strong> WiFi, Smart-TV, Air conditioner, Refrigerator and Room Service.<br />
                   <strong><a href={barakaPdf} target="_blank" rel="noopener noreferrer" style={{ color: '#40cfff' }}>Service Offering...</a></strong>
                 </p>
-              </Box>
+              </div>
               {/* El-Baraka Thermal Complex */}
-              <Box sx={{ width: '100%', background: 'rgba(255,255,255,0.08)', borderRadius: 3, boxShadow: 3, p: { xs: 2, sm: 3 } }}>
+              <div style={{ width: '100%', background: 'rgba(255,255,255,0.08)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1rem' }}>
                 <h4 style={{ lineHeight: '60px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', textAlign: 'center' }}>
                   <img src={elBarakaImg} alt="El-Baraka Thermal Complex" height={60} style={{ borderRadius: 8, marginRight: 12 }} />
                   <strong>El-Baraka Thermal Complex</strong>
@@ -562,34 +553,34 @@ function SectionContent({ section }: { section: string }) {
                   <a href={elBarakaTarifPdf} target="_blank" rel="noopener noreferrer" style={{ color: '#40cfff' }}>More Fees...</a>. <br />
                   <strong><a href={lallaMaounaPdf} target="_blank" rel="noopener noreferrer" style={{ color: '#40cfff' }}>Service Offering...</a></strong>
                 </p>
-              </Box>
-            </Box>
-          </Box>
+              </div>
+            </div>
+          </div>
         </>
       );
     case 'Sponsors':
       // Dynamically import supporter images using Vite's import.meta.glob
-      const supporterImages = import.meta.glob('./assets/img/supporters/*.png', { eager: true, as: 'url' }) as Record<string, string>;
+      const supporterImages = import.meta.glob('./assets/img/supporters/*.png', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
       const supporterImageUrls = [1, 2, 3].map(num => supporterImages[`./assets/img/supporters/${num}.png`]);
 
       return (
-        <Box>
-          <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <BusinessIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="medium" />
+        <div>
+          <h4 className="d-flex align-items-center gap-2">
+            <i className="fa-solid fa-award" style={{ fontSize: 18, color: '#40cfff' }}></i>
             Sponsors & Supporters
-          </Typography>
-          <Typography variant="body2" sx={{ color: '#fff', mb: 2, fontFamily: 'Open Sans, sans-serif !important' }}>
+          </h4>
+          <p className="text-white mb-3" style={{ fontFamily: 'Open Sans, sans-serif !important' }}>
             We gratefully acknowledge the generous support of our sponsors and partners, whose contributions help make NCNETI'25 possible.
-          </Typography>
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center', mt: 3 }}>
+          </p>
+          <div className="d-flex flex-wrap gap-4 justify-content-center" style={{ marginTop: '1rem' }}>
             {supporterImageUrls.map((imgUrl, idx) => (
-              <Box
+              <div
                 key={idx + 1}
-                sx={{
+                style={{
                   background: '#fff',
-                  borderRadius: 3,
-                  boxShadow: 4,
-                  p: 2,
+                  borderRadius: 12,
+                  boxShadow: '0 2px 8px #0008',
+                  padding: '0.5rem',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -597,244 +588,326 @@ function SectionContent({ section }: { section: string }) {
                   minHeight: 120,
                   transition: 'transform 0.4s cubic-bezier(.4,2,.6,1)',
                   cursor: 'pointer',
-                  '&:hover': {
-                    zIndex: 2,
-                    transform: 'scale(2.1) rotate(-2deg)',
-                    boxShadow: 12,
-                  },
                 }}
               >
-                <img src={imgUrl} alt={`Supporter ${idx + 1}`} style={{ maxHeight: 80, maxWidth: 160, objectFit: 'contain', filter: 'none', transition: 'transform 0.4s cubic-bezier(.4,2,.6,1)' }} />
-              </Box>
+                <img src={imgUrl} alt={`Sponsor ${idx + 1}`} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+              </div>
             ))}
-          </Box>
-        </Box>
+          </div>
+        </div>
       );
     case 'Contact':
       return (
-        <Box>
-          <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <ContactMailIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="medium" />
+        <div>
+          <h4 className="d-flex align-items-center gap-2">
+            <i className="fa-solid fa-envelope" style={{ fontSize: 18, color: '#40cfff' }}></i>
             Contact Us
-          </Typography>
-          <Typography variant="body2">
-            <ContactMailIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="small" />LabSTIC Laboratory<br/>
-            <PlaceIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="small" />Address: P.O.B 401 Guelma 24000 - Algeria<br/>
-            <MailIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="small" />Email: <a href="mailto:ncnetiguelma@gmail.com">ncnetiguelma@gmail.com</a><br/>
-            <PhoneIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="small" />Phone: 0698419556<br/>
-            <StarIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="small" />Facebook: ncneti23<br/>
-            <PhoneIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="small" />Whatsapp: 0698419556
-          </Typography>
-        </Box>
+          </h4>
+          <div className="d-flex flex-column gap-3 mt-3">
+            {/* Address Box - full width */}
+            <div style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#fff', width: '100%' }}>
+              <a
+                href="https://maps.app.goo.gl/CkuhmH4wRwQYJTpf9"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#f7971e', fontWeight: 700, fontSize: 20, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}
+              >
+                <i className="fa-regular fa-map" style={{ fontSize: 54, marginBottom: 8, color: '#f7971e' }}></i>
+                <span style={{ fontWeight: 700, fontSize: 18, marginBottom: 2 }}>Address</span>
+                <span style={{ fontWeight: 500, fontSize: 16, textDecoration: 'underline', color: '#f7971e' }}>P.O.B 401 Guelma 24000 - Algeria<br/>View on Google Maps</span>
+              </a>
+            </div>
+            {/* Other contact boxes in a row */}
+            <div className="d-flex flex-column flex-md-row gap-3">
+              {/* Email Box */}
+              <a
+                href="mailto:ncnetiguelma@gmail.com"
+                style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#ea4335', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
+              >
+                <i className="fa-regular fa-envelope" style={{ fontSize: 54, marginBottom: 8, color: '#ea4335' }}></i>
+                <span style={{ fontWeight: 700, fontSize: 18, marginBottom: 2, color: '#ea4335' }}>Email</span>
+                <span style={{ fontWeight: 500, fontSize: 16, textDecoration: 'underline', color: '#ea4335' }}>ncnetiguelma@gmail.com</span>
+              </a>
+              {/* Phone Box */}
+              <a
+                href="tel:0698419556"
+                style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#3f5efb', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
+              >
+                <i className="fa-solid fa-phone" style={{ fontSize: 54, marginBottom: 8, color: '#3f5efb' }}></i>
+                <span style={{ fontWeight: 700, fontSize: 18, marginBottom: 2, color: '#3f5efb' }}>Phone</span>
+                <span style={{ fontWeight: 500, fontSize: 16, textDecoration: 'underline', color: '#3f5efb' }}>0698419556</span>
+              </a>
+              {/* Facebook Box */}
+              <a
+                href="https://www.facebook.com/ncneti23"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#1877f3', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
+              >
+                <i className="fa-brands fa-facebook" style={{ fontSize: 54, marginBottom: 8, color: '#1877f3' }}></i>
+                <span style={{ fontWeight: 700, fontSize: 18, marginBottom: 2, color: '#1877f3' }}>Facebook</span>
+                <span style={{ fontWeight: 500, fontSize: 16, textDecoration: 'underline', color: '#1877f3' }}>ncneti23</span>
+              </a>
+              {/* WhatsApp Box */}
+              <a
+                href="https://wa.me/213698419556"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#25d366', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
+              >
+                <i className="fa-brands fa-whatsapp" style={{ fontSize: 54, marginBottom: 8, color: '#25d366' }}></i>
+                <span style={{ fontWeight: 700, fontSize: 18, marginBottom: 2, color: '#25d366' }}>WhatsApp</span>
+                <span style={{ fontWeight: 500, fontSize: 16, textDecoration: 'underline', color: '#25d366' }}>0698419556</span>
+              </a>
+            </div>
+          </div>
+        </div>
       );
     case 'Submit Paper':
       return (
-        <Box>
-          <Typography variant="h4" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <UploadFileIcon sx={{ mr: 1, verticalAlign: 'middle' }} fontSize="medium" />
-            Submit Paper
-          </Typography>
-          <Typography variant="body2" sx={{ mb: 2 }}>
-            All papers must be original and should not be under consideration for publication in any other journal or conference.<br/>
-            <b>Templates:</b><br/>
-            Short Paper submission (Posters) for presentation only without publication (proceeding of abstracts); Papers must be written in English, Arabic or French and must not exceed two (2) pages<br/>
-            Full paper research submission for both presentation and publication (in Conference proceeding); Papers should be written in English and must not exceed 8 pages in length (6 pages minimum), including figures, tables, and references.<br/>
-            All papers should be written in LaTeX according to the CEUR template:<br/>
-            <a href="https://ceur-ws.org/Vol-XXX/CEURART.zip" target="_blank" rel="noopener noreferrer">Download the official CEUR-WS.org LaTeX template</a><br/>
-            <a href="https://www.overleaf.com/read/gwhxnqcghhdt" target="_blank" rel="noopener noreferrer">Overleaf: CEUR Workshop Proceedings LaTeX Template</a>
-          </Typography>
-          <Typography variant="body2">
-            Submission system: <a href="https://cmt3.research.microsoft.com/NCNETI2025/Submission/Index" target="_blank" rel="noopener noreferrer">Microsoft CMT</a>
-          </Typography>
-        </Box>
+        <div style={{ maxWidth: 900, margin: '0 auto' }}>
+          {/* First box: Submit Paper, full width */}
+          <div className="mb-3">
+            <div className="p-3 rounded-3 shadow-sm bg-dark bg-opacity-75 border border-primary text-start">
+              <h4 className="d-flex align-items-center gap-2 mb-3 text-start">
+                <i className="fa-solid fa-upload" style={{ fontSize: 20, color: '#40cfff' }}></i>
+                Submit Paper
+              </h4>
+              <p className="mb-0 text-start" style={{ fontSize: 15 }}>
+                All papers must be original and should not be under consideration for publication in any other journal or conference.
+              </p>
+              <a href="https://cmt3.research.microsoft.com/NCNETI2025/Submission/Index" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', width: 'auto' }}>
+                <div style={{
+                  marginTop: 16,
+                  background: '#3f5efb',
+                  color: '#fff',
+                  padding: '6px 18px',
+                  borderRadius: 24,
+                  fontWeight: 600,
+                  fontSize: 15,
+                  boxShadow: '0 2px 8px #0008',
+                  textAlign: 'center',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  transition: 'background 0.2s, box-shadow 0.2s',
+                  cursor: 'pointer',
+                }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.background = '#3246d3';
+                    e.currentTarget.style.boxShadow = '0 4px 16px #3f5efb55';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.background = '#3f5efb';
+                    e.currentTarget.style.boxShadow = '0 2px 8px #0008';
+                  }}
+                >
+                  <i className="fa-solid fa-upload" style={{ marginRight: 8, verticalAlign: 'middle', fontSize: 16 }}></i>
+                  Submit via Microsoft CMT
+                </div>
+              </a>
+            </div>
+          </div>
+          {/* Second line: Templates box full width */}
+          <div className="mb-3">
+            <div className="p-3 rounded-3 shadow-sm bg-dark bg-opacity-75 border border-warning text-start">
+              <h4 className="d-flex align-items-center gap-2 mb-3 text-start">
+                <i className="fa-regular fa-file-lines" style={{ fontSize: 20, color: '#f7971e' }}></i>
+                Templates
+              </h4>
+              <p className="mb-0 text-start" style={{ fontSize: 15 }}>
+                Download and use the official templates for your submission. Both full and short paper templates are provided below.
+              </p>
+            </div>
+          </div>
+          {/* Two columns for Full Paper and Short Paper */}
+          <div className="row g-3">
+            {/* Full Paper Research Template */}
+            <div className="col-md-6">
+              <div className="p-3 h-100 rounded-3 shadow-sm bg-secondary bg-opacity-75 border border-info text-start">
+                <h5 className="d-flex align-items-center gap-2 mb-2 text-start">
+                  <i className="fa-solid fa-file-archive" style={{ color: '#40cfff', fontSize: 18 }}></i>
+                  Full Paper Research Submission
+                </h5>
+                <p className="mb-2 text-start" style={{ fontSize: 15 }}>
+                  Full papers must be written in English (6–8 pages, including figures, tables, and references) and prepared using the official CEUR LaTeX template. <br /> Accepted papers will be published in the conference proceedings.
+                </p>
+                <p className="mb-1 text-start" style={{ fontSize: 15 }}>
+                  Use the following links to download the official CEUR LaTeX template or access it directly on Overleaf:
+                </p>
+                <ul className="mb-2 text-start" style={{ fontSize: 15 }}>
+                  <li>
+                    <a href="https://ceur-ws.org/Vol-XXX/CEURART.zip" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: '#f7971e', fontWeight: 600, fontSize: 15, textDecoration: 'none' }}>
+                      <i className="fa-solid fa-file-archive" style={{ color: '#f7971e', fontSize: 20 }}></i>
+                      Download CEUR-WS.org LaTeX template
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.overleaf.com/read/gwhxnqcghhdt" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: '#47d147', fontWeight: 600, fontSize: 15, textDecoration: 'none', marginTop: 4 }}>
+                      <i className="ai ai-overleaf" style={{ color: '#47d147', fontSize: 22, marginTop: 1 }}></i>
+                      Work with CEUR Workshop Proceedings on Overleaf
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            {/* Short Paper Template */}
+            <div className="col-md-6">
+              <div className="p-3 h-100 rounded-3 shadow-sm bg-secondary bg-opacity-75 border border-success text-start">
+                <h5 className="d-flex align-items-center gap-2 mb-2 text-start">
+                  <i className="fa-regular fa-file-lines" style={{ color: '#47d147', fontSize: 18 }}></i>
+                  Short Paper (Poster) Submission
+                </h5>
+                <p className="mb-2 text-start" style={{ fontSize: 15 }}>
+                    Poster submissions are for presentation only (not published in the proceedings) and may be written in English, Arabic, or French, with a maximum length of 2 pages. <br /> Templates for poster submissions will be provided at a later date. <br /> For online poster presentations, authors are required to prepare a video presentation and submit it several days before the beginning of the event.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       );
     default:
       return null;
   }
 }
 
-// For compact menu: icon below text
-const renderMenuLabel = (section: string) => (
-  <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', lineHeight: 1.1 }}>
-    <span style={{ fontSize: 12, fontWeight: 500 }}>{section}</span>
-    <span style={{ marginTop: 1 }}>{sectionIcons[section]}</span>
-  </span>
-);
-
 function App() {
   const [tab, setTab] = useState(0);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const [ackOpen, setAckOpen] = useState(false);
+  // Remove drawerOpen state and manual collapse logic
   // Set body background image
   document.body.style.background = 'url("./src/assets/img/hero-bg.jpg") center/cover no-repeat fixed';
   document.body.style.minHeight = '100vh';
   document.body.style.fontFamily = 'Open Sans, sans-serif';
 
-  // Scroll to top on tab change
-  const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
-    setTab(newValue);
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 0);
-  };
-
   return (
-    <Box sx={{ minHeight: '100vh', fontFamily: 'Open Sans, sans-serif !important' }}>
-      <AppBar position="fixed" elevation={2} sx={{ background: '#111' }}>
-        <Toolbar sx={{ minHeight: 56, px: { xs: 1, sm: 2 }, gap: { xs: 1, sm: 2 } }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, gap: { xs: 1, sm: 2 } }}>
+    <div style={{ minHeight: '100vh', fontFamily: 'Open Sans, sans-serif' }}>
+      {/* Bootstrap Navbar using React Bootstrap components */}
+      <Navbar bg="dark" variant="dark" expand="md" fixed="top" className="shadow-sm mb-0 pb-0">
+        <Container fluid>
+          <Navbar.Brand href="#">
             <img src={logo} alt="NCNETI'25 Logo" style={{ height: 40, width: 'auto', marginRight: 8, filter: 'drop-shadow(0 2px 8px #0008)' }} />
-          </Box>
-          {isMobile ? (
-            <>
-              <IconButton color="inherit" edge="end" onClick={() => setDrawerOpen(true)} size="large" sx={{ ml: 1 }}>
-                <MenuIcon />
-              </IconButton>
-              <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-                <Box sx={{ width: 220, pt: 2 }} role="presentation" onClick={() => setDrawerOpen(false)}>
-                  <List>
-                    {sections.map((section, idx) => (
-                      <ListItem key={section} disablePadding>
-                        <ListItemButton
-                          selected={tab === idx}
-                          onClick={() => { setTab(idx); setTimeout(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 0); }}
-                          sx={{ px: 2, minHeight: 36 }} // More left/right padding for separation
-                        >
-                          <ListItemText primary={renderMenuLabel(section)} />
-                        </ListItemButton>
-                      </ListItem>
-                    ))}
-                  </List>
-                </Box>
-              </Drawer>
-            </>
-          ) : (
-            <Tabs
-              value={tab}
-              onChange={handleTabChange}
-              textColor="inherit"
-              indicatorColor="secondary"
-              variant="scrollable"
-              scrollButtons="auto"
-              TabIndicatorProps={{ style: { background: '#fff' } }}
-              sx={{ minHeight: 40, gap: 1 }}
-            >
-              {sections.map((section) => (
-                <Tab
-                  key={section}
-                  label={renderMenuLabel(section)}
-                  sx={{
-                    color: '#fff',
-                    fontWeight: 500,
-                    fontFamily: 'Open Sans, sans-serif !important',
-                    minHeight: 36,
-                    px: 1.5, // More left/right padding for separation
-                    textTransform: 'none',
-                    minWidth: 40,
-                  }}
-                />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="main-navbar-nav" />
+          <Navbar.Collapse id="main-navbar-nav">
+            <Nav className="ms-auto mb-2 mb-md-0">
+              {sections.map((section, idx) => (
+                section === 'Submit Paper' ? (
+                  <Nav.Link
+                    key={section}
+                    active={tab === idx}
+                    style={{ cursor: 'pointer', padding: 0, marginLeft: 8, marginRight: 8 }}
+                    onClick={() => { setTab(idx); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                    className="d-flex align-items-center"
+                  >
+                    <div
+                      style={{
+                        background: '#3f5efb',
+                        color: '#fff',
+                        padding: '6px 18px',
+                        borderRadius: 24,
+                        fontWeight: 600,
+                        fontSize: 15,
+                        boxShadow: '0 2px 8px #0008',
+                        minWidth: 0,
+                        width: 'auto',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 6,
+                        transition: 'background 0.2s, box-shadow 0.2s',
+                        cursor: 'pointer',
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.background = '#3246d3';
+                        e.currentTarget.style.boxShadow = '0 4px 16px #3f5efb55';
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.background = '#3f5efb';
+                        e.currentTarget.style.boxShadow = '0 2px 8px #0008';
+                      }}
+                    >
+                      <i className="fa-solid fa-upload" style={{ marginRight: 8, verticalAlign: 'middle', fontSize: 16 }}></i>
+                      {section}
+                    </div>
+                  </Nav.Link>
+                ) : (
+                  <Nav.Link
+                    key={section}
+                    active={tab === idx}
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => { setTab(idx); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  >
+                    {section}
+                  </Nav.Link>
+                )
               ))}
-            </Tabs>
-          )}
-        </Toolbar>
-      </AppBar>
-      {/* Spacer to prevent content from being hidden behind the fixed AppBar */}
-      <Toolbar />
-      <Container
-        sx={{
-          pt: 2,
-          pb: 4,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          color: '#fff',
-          fontFamily: 'Open Sans, sans-serif !important',
-          ...(sections[tab] !== 'Accommodations' && {
-            background: 'rgba(30, 34, 44, 0.7)',
-            backdropFilter: 'blur(12px)',
-            borderRadius: 4,
-            boxShadow: 6,
-          })
-        }}
-      >
-        <SectionContent section={sections[tab]} />
-      </Container>
-      {/* Bottombar Footer */}
-      <Box component="footer" sx={{
-        width: '100vw',
-        position: 'fixed',
-        left: 0,
-        bottom: 0,
-        zIndex: 1200,
-        background: '#181a20',
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      {/* Spacer for fixed navbar (Bootstrap md navbar is 56px, but may be taller on some screens) */}
+      <div style={{ height: 56, margin: 0, padding: 0 }}></div>
+      {/* Main content container */}
+      <div className="container py-4" style={{
         color: '#fff',
-        borderTop: '2px solid #222',
-        boxShadow: '0 -2px 16px #000a',
         fontFamily: 'Open Sans, sans-serif',
-        px: { xs: 1, sm: 3 },
-        py: 0,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        background: 'rgba(24, 28, 38, 0.68)', // lighter, more translucent, slightly blue-tinted dark
+        backdropFilter: 'blur(16px)',
+        borderRadius: 16,
+        boxShadow: '0 2px 8px #0008',
       }}>
-        <Box sx={{
-          width: '100%',
-          maxWidth: 900,
-          display: 'flex',
-          flexDirection: { xs: 'column', sm: 'row' },
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          py: 1.2,
-          px: 1,
-        }}>
-          <Box>
-                      Webmaster: <a href="https://staff.univ-guelma.dz/rochdi-boudjehem" style={{ color: 'rgb(64, 207, 255)', fontWeight: 600, textDecoration: 'none', transition: 'color 0.2s' }}>Dr. Rochdi Boudjehem</a>
-          </Box>
-          <Box sx={{ mt: { xs: 1, sm: 0 } }}>
-            © <strong>LabSTIC Laboratory</strong>
-          </Box>
-        </Box>
-        {/* Scrollable CMT acknowledgment */}
-        <Box sx={{
-          width: '100%',
-          maxWidth: 900,
-          overflowY: 'auto',
-          maxHeight: 0,
-          transition: 'max-height 0.5s',
-          background: 'rgba(30,34,44,0.97)',
-          color: '#B7AC3F',
-          fontWeight: 600,
-          fontSize: { xs: 13, sm: 14 },
-          opacity: 0.92,
-          px: 2,
-          borderTop: '1px solid #333',
-          textAlign: 'center',
-          whiteSpace: 'pre-line',
-          wordBreak: 'break-word',
-          mx: 'auto',
-          textShadow: '0 1px 4px #0008',
-          cursor: 'pointer',
-          userSelect: 'none',
-        }}
-        className="cmt-ack-scroll"
-        onClick={e => {
-          const box = e.currentTarget;
-          if (box.style.maxHeight === '' || box.style.maxHeight === '0px') {
-            box.style.maxHeight = '120px';
-          } else {
-            box.style.maxHeight = '0px';
-          }
-        }}
-        title="Click to show/hide acknowledgment"
-        >
-          <span style={{ display: 'inline-block', padding: '8px 0' }}>
+        <SectionContent section={sections[tab]} />
+      </div>
+      {/* Footer */}
+      <footer className="footer mt-auto pb-0 mb-0 py-2 bg-dark text-white fixed-bottom border-top border-secondary shadow" style={{ fontFamily: 'Open Sans, sans-serif', zIndex: 1200 }}>
+        <div className="container d-flex flex-column flex-sm-row align-items-center justify-content-between">
+          <div style={{ fontSize: 12 }}>
+            Webmaster: <a href="https://staff.univ-guelma.dz/rochdi-boudjehem" style={{ color: 'rgb(64, 207, 255)', fontWeight: 600, textDecoration: 'none', transition: 'color 0.2s', fontSize: 12 }}>Dr. Rochdi Boudjehem</a>
+          </div>
+          <div className="d-flex align-items-center justify-content-center flex-grow-1" style={{ minWidth: 0 }}>
+            <button
+              className="btn btn-link btn-sm text-warning p-0 d-flex align-items-center"
+              style={{ textDecoration: 'none', fontWeight: 600, fontSize: 12 }}
+              type="button"
+              onClick={() => setAckOpen(v => !v)}
+              aria-controls="acknowledgment-box"
+              aria-expanded={ackOpen}
+            >
+              <i className={`fa-solid ${ackOpen ? 'fa-circle-chevron-down' : 'fa-circle-chevron-up'} mx-2`} style={{ fontSize: 20, verticalAlign: 'middle', transition: 'transform 0.2s' }}></i>
+              Show Microsoft CMT Acknowledgment
+              <i className={`fa-solid ${ackOpen ? 'fa-circle-chevron-down' : 'fa-circle-chevron-up'} mx-2`} style={{ fontSize: 20, verticalAlign: 'middle', transition: 'transform 0.2s' }}></i>
+            </button>
+          </div>
+          <div className="mt-2 mt-sm-0" style={{ fontSize: 12 }}>
+            © <strong style={{ fontSize: 12 }}>LabSTIC Laboratory</strong>
+          </div>
+        </div>
+        <div className="container text-center small pt-1 pb-1" style={{ color: '#B7AC3F', opacity: 0.92 }}>
+          <div
+            id="acknowledgment-box"
+            style={{
+              display: ackOpen ? 'block' : 'none',
+              maxHeight: 80,
+              overflowY: 'auto',
+              background: 'rgba(30,34,44,0.95)',
+              borderRadius: 8,
+              margin: '8px auto 0',
+              padding: '8px 12px',
+              color: '#B7AC3F',
+              fontSize: 12,
+              boxShadow: '0 2px 8px #0008',
+              width: '100%',
+              maxWidth: 600,
+              transition: 'max-height 0.3s',
+            }}
+            tabIndex={-1}
+          >
             "The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support."
-          </span>
-        </Box>
-      </Box>
-    </Box>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }
 
-export default App
+export default App;

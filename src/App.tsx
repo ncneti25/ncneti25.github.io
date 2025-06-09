@@ -20,6 +20,11 @@ aiLink.href = './assets/css/academicons.min.css';
 aiLink.rel = 'stylesheet';
 document.head.appendChild(aiLink);
 
+// Add favicon.ico to the img folder for reference
+// The favicon.ico is already present in public/ for browser use, but for documentation or asset reference, we can add it to the img folder as well.
+// If you want to use it in the UI, you can import it like:
+// import favicon from './assets/img/favicon.ico';
+
 const sections = [
     'Home',
     'Topics',
@@ -32,10 +37,10 @@ const sections = [
     'Submit Paper',
 ];
 
-// PDF links
-const barakaPdf = '/src/assets/pdf/offre de services Baraka.pdf';
-const lallaMaounaPdf = '/src/assets/pdf/offre de services Lalla Maouna.pdf';
-const elBarakaTarifPdf = '/src/assets/pdf/Tarif Convention El-BARAKA.pdf';
+// PDF links (use correct public path for gh-pages deployment)
+const barakaPdf = '/assets/pdf/offre de services Baraka.pdf';
+const lallaMaounaPdf = '/assets/pdf/offre de services Lalla Maouna.pdf';
+const elBarakaTarifPdf = '/assets/pdf/Tarif Convention El-BARAKA.pdf';
 
 function SectionContent({ section }: { section: string }) {
     switch (section) {
@@ -154,7 +159,7 @@ function SectionContent({ section }: { section: string }) {
                             </div>
                         )}
                         {/* Call for Papers Button */}
-                        <a href="/src/assets/pdf/NCNETI25_CallForPaper.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', width: 'auto' }}>
+                        <a href="/assets/pdf/NCNETI25_CallForPaper.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', width: 'auto' }}>
                             <div style={{
                                 marginTop: 8,
                                 marginBottom: 0,

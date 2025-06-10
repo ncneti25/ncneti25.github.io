@@ -45,16 +45,17 @@ function SectionContent({ section }: { section: string }) {
         case 'Home':
             const [showVideo, setShowVideo] = useState(false);
             return (
-                <div className="w-100 d-flex flex-column align-items-center mt-2 position-relative"
+                <div className="w-100 d-flex flex-column align-items-center mt-2 position-relative py-4"
                     style={{
-                        // Remove fixed minHeight to eliminate trailing space
+                        background: '#fff', // Solid white background
+                        borderRadius: 12,
+                        boxShadow: '0 2px 16px #0002',
                         minHeight: undefined,
-                        // Optionally, set a small minHeight only for large screens
                         ...(window.innerWidth > 768 ? { minHeight: '60vh' } : {}),
                     }}
                 >
-                    {/* Hero background image */}
-                    <div style={{
+                    {/* Hero background image (now visually hidden, but kept for possible future use) */}
+                    {/* <div style={{
                         position: 'absolute',
                         top: 0,
                         left: 0,
@@ -64,28 +65,24 @@ function SectionContent({ section }: { section: string }) {
                         background: 'url(/hero-bg.jpg) center/cover no-repeat',
                         filter: 'blur(12px)',
                         borderRadius: 12,
-                    }} />
+                    }} /> */}
                     {/* Logo above intro */}
                     <div className="z-1 mt-2 mb-2">
-                        <img src={logo} alt="NCNETI'25 Logo" style={{ height: 100, width: 'auto', filter: 'drop-shadow(0 2px 8px #0008)' }} />
+                        <img src="./src/assets/img/logoHuge.png" alt="NCNETI'25 Logo" style={{ height: 200, width: 'auto' }} />
                     </div>
-                    <h5 className="z-1 d-flex align-items-center gap-2">
-                        {/* <i className="fa-solid fa-house" style={{ fontSize: 22, color: '#40cfff' }}></i> */}
-                        The Second National Conference on New Educational Technologies and Informatics
-                    </h5>
-                    <p className="z-1" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                        <i className="fa fa-calendar-alt" style={{ fontSize: 16, color: '#40cfff' }}></i> October 1-2, 2025 at the&nbsp;
+                    <p className="z-1" style={{ fontFamily: 'Open Sans, sans-serif', color: '#23272f', paddingLeft: 32, paddingRight: 32 }}>
+                        <i className="fa fa-calendar-alt" style={{ fontSize: 16, color: '#3f5efb' }}></i> October 1-2, 2025 at the&nbsp;
                         <a
                             href="https://labstic.univ-guelma.dz/"
                             target="_blank"
                             rel="noopener noreferrer"
                             title="LabSTIC Laboratory, University of 8 Mai 1945, Guelma, Algeria"
-                            style={{ textDecoration: 'underline dotted', cursor: 'pointer', color: '#40cfff' }}
+                            style={{ textDecoration: 'underline dotted', cursor: 'pointer', color: '#fc466b', fontWeight: 600 }}
                         >
                             LabSTIC Laboratory, University of Guelma
                         </a>
                     </p>
-                    <p className="z-1 text-center" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+                    <p className="col-11 text-center" style={{ fontFamily: 'Open Sans, sans-serif', color: '#23272f' }}>
                         The LabSTIC Laboratory is pleased to announce the second edition of NCNETI'25, taking place on October 1-2, 2025. This national conference provides a platform for researchers, academics, and doctoral students to present their latest research and advancements in new educational technologies and informatics. Participants will have the opportunity to share theoretical insights, innovative methodologies, and practical applications, fostering collaboration and knowledge exchange within the academic community.
                     </p>
                     <div className="d-flex flex-column align-items-center mt-3 gap-1 z-1">

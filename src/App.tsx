@@ -68,7 +68,7 @@ function SectionContent({ section }: { section: string }) {
                     }} /> */}
                     {/* Logo above intro */}
                     <div className="z-1 mt-2 mb-2">
-                        <img src="./src/assets/img/logoHuge.png" alt="NCNETI'25 Logo" style={{ height: 200, width: 'auto' }} />
+                        <img src="/logoHuge.png" alt="NCNETI'25 Logo" style={{ height: 200, width: 'auto' }} />
                     </div>
                     <p className="z-1" style={{ fontFamily: 'Open Sans, sans-serif', color: '#23272f', paddingLeft: 32, paddingRight: 32 }}>
                         <i className="fa fa-calendar-alt" style={{ fontSize: 16, color: '#3f5efb' }}></i> October 1-2, 2025 at the&nbsp;

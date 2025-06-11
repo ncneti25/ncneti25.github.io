@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import './App.css'
-import logo from './assets/img/logo.png';
 // Fix hotel image imports to match actual file paths and extensions
 import lallamaounaImg from './assets/img/hotels/lallamaouna.jpg';
 import lallamaounaPrices from './assets/img/hotels/lallamaouna-prices.svg';

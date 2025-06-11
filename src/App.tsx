@@ -67,8 +67,9 @@ function SectionContent({ section }: { section: string }) {
                         borderRadius: 12,
                     }} /> */}
                     {/* Logo above intro */}
-                    <div className="z-1 mt-2 mb-2">
-                        <img src="/logoHuge.png" alt="NCNETI'25 Logo" style={{ height: 200, width: 'auto' }} />
+                    <div className="z-1 mt-2 mb-2 d-flex flex-column flex-md-row align-items-center justify-content-center gap-2 w-100">
+                        <img alt="NCNETI'25 Book Logo" className="mb-2 mb-md-0" src="/logoBook.png" style={{height: 90, width: 'auto', maxWidth: '60vw', objectFit: 'contain'}} />
+                        <img alt="NCNETI'25 Text Logo" className="mt-0" src="/logoHuge.png" style={{height: 90, width: 'auto', maxWidth: '60vw', objectFit: 'contain'}} />
                     </div>
                     <p className="z-1" style={{ fontFamily: 'Open Sans, sans-serif', color: '#23272f', paddingLeft: 32, paddingRight: 32 }}>
                         <i className="fa fa-calendar-alt" style={{ fontSize: 16, color: '#3f5efb' }}></i> October 1-2, 2025 at the&nbsp;
@@ -83,7 +84,7 @@ function SectionContent({ section }: { section: string }) {
                         </a>
                     </p>
                     <p className="col-11 text-center" style={{ fontFamily: 'Open Sans, sans-serif', color: '#23272f' }}>
-                        The LabSTIC Laboratory is pleased to announce the second edition of NCNETI'25, taking place on October 1-2, 2025. This national conference provides a platform for researchers, academics, and doctoral students to present their latest research and advancements in new educational technologies and informatics. Participants will have the opportunity to share theoretical insights, innovative methodologies, and practical applications, fostering collaboration and knowledge exchange within the academic community.
+                        The LabSTIC Laboratory is pleased to announce the second edition of NCNETI'25, taking place on October 1-2, 2025. <br /> <br />This national conference provides a platform for researchers, academics, and doctoral students to present their latest research and advancements in new educational technologies and informatics. <br /> Participants will have the opportunity to share theoretical insights, innovative methodologies, and practical applications, fostering collaboration and knowledge exchange within the academic community.
                     </p>
                     <div className="d-flex flex-column align-items-center mt-3 gap-1 z-1">
                         {/* Play Button */}
@@ -242,53 +243,39 @@ function SectionContent({ section }: { section: string }) {
                 </div>
             );
         case 'Important Dates':
-            // New set of icons and colors for each date using Bootstrap Icons
-            const importantDates = [
-                {
-                    icon: <i className="fa-solid fa-upload" style={{ color: '#fc466b', marginRight: 8, fontSize: 20 }}></i>,
-                    text: 'Submission deadline:',
-                    date: 'July 15, 2025',
-                    color: '#fc466b',
-                },
-                {
-                    icon: <i className="fa-solid fa-star" style={{ color: '#f7971e', marginRight: 8, fontSize: 20 }}></i>,
-                    text: 'Notification deadline:',
-                    date: 'August 15, 2025',
-                    color: '#f7971e',
-                },
-                {
-                    icon: <i className="fa-solid fa-clipboard-check" style={{ color: '#3f5efb', marginRight: 8, fontSize: 20 }}></i>,
-                    text: 'Camera-ready deadline:',
-                    date: 'September 1, 2025',
-                    color: '#3f5efb',
-                },
-                {
-                    icon: <i className="fa-solid fa-award" style={{ color: '#11998e', marginRight: 8, fontSize: 20 }}></i>,
-                    text: 'Registration deadline:',
-                    date: 'September 5, 2025',
-                    color: '#11998e',
-                },
-                {
-                    icon: <i className="fa-solid fa-calendar-days" style={{ color: '#40cfff', marginRight: 8, fontSize: 20 }}></i>,
-                    text: 'Conference dates:',
-                    date: 'October 1-2, 2025',
-                    color: '#40cfff',
-                },
-            ];
+            // Render the Important Dates section with the provided HTML structure and styles, using React/JSX
             return (
-                <div>
-                    <h4 className="d-flex align-items-center gap-2 mb-3">
-                        <i className="fa-solid fa-calendar-days" style={{ fontSize: 22, color: '#40cfff' }}></i>
+                <div style={{ background: '#fff', borderRadius: 16, boxShadow: '0 2px 16px rgba(0,0,0,0.133)', padding: '2.2rem 1.2rem', maxWidth: 600, margin: '0px auto' }}>
+                    <h4 className="d-flex align-items-center gap-2 mb-3" style={{ color: '#23272f' }}>
+                        <i className="fa-solid fa-calendar-days" style={{ fontSize: 22, color: '#3246d3' }}></i>
                         Important Dates
                     </h4>
-                    <ul style={{ textAlign: 'left', maxWidth: 540, margin: '0 auto', padding: 0, listStyle: 'none' }}>
-                        {importantDates.map((item, idx) => (
-                            <li key={idx} style={{ display: 'flex', alignItems: 'center', marginBottom: 18, color: item.color }}>
-                                {item.icon}
-                                <span style={{ fontWeight: 400, fontSize: 15, minWidth: 170, display: 'inline-block', color: item.color, marginRight: 6 }}>{item.text}</span>
-                                <span style={{ fontWeight: 700, fontSize: 15, color: item.color }}>{item.date}</span>
-                            </li>
-                        ))}
+                    <ul style={{ textAlign: 'left', margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 18 }}>
+                        <li style={{ display: 'flex', alignItems: 'center', background: '#f6f8fa', border: '2px solid #e3e7ef', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.067)', padding: '0.9rem 1.2rem', color: '#23272f', gap: 10 }}>
+                            <i className="fa-solid fa-upload" style={{ color: '#3246d3', marginRight: 8, fontSize: 20 }}></i>
+                            <span style={{ fontWeight: 500, fontSize: 15, minWidth: 170, display: 'inline-block', color: '#23272f', marginRight: 6 }}>Submission deadline:</span>
+                            <span style={{ fontWeight: 700, fontSize: 15, color: '#fc466b' }}>July 15, 2025</span>
+                        </li>
+                        <li style={{ display: 'flex', alignItems: 'center', background: '#f6f8fa', border: '2px solid #e3e7ef', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.067)', padding: '0.9rem 1.2rem', color: '#23272f', gap: 10 }}>
+                            <i className="fa-solid fa-star" style={{ color: '#3246d3', marginRight: 8, fontSize: 20 }}></i>
+                            <span style={{ fontWeight: 500, fontSize: 15, minWidth: 170, display: 'inline-block', color: '#23272f', marginRight: 6 }}>Notification deadline:</span>
+                            <span style={{ fontWeight: 700, fontSize: 15, color: '#f7971e' }}>August 15, 2025</span>
+                        </li>
+                        <li style={{ display: 'flex', alignItems: 'center', background: '#f6f8fa', border: '2px solid #e3e7ef', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.067)', padding: '0.9rem 1.2rem', color: '#23272f', gap: 10 }}>
+                            <i className="fa-solid fa-clipboard-check" style={{ color: '#3246d3', marginRight: 8, fontSize: 20 }}></i>
+                            <span style={{ fontWeight: 500, fontSize: 15, minWidth: 170, display: 'inline-block', color: '#23272f', marginRight: 6 }}>Camera-ready deadline:</span>
+                            <span style={{ fontWeight: 700, fontSize: 15, color: '#3f5efb' }}>September 1, 2025</span>
+                        </li>
+                        <li style={{ display: 'flex', alignItems: 'center', background: '#f6f8fa', border: '2px solid #e3e7ef', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.067)', padding: '0.9rem 1.2rem', color: '#23272f', gap: 10 }}>
+                            <i className="fa-solid fa-award" style={{ color: '#3246d3', marginRight: 8, fontSize: 20 }}></i>
+                            <span style={{ fontWeight: 500, fontSize: 15, minWidth: 170, display: 'inline-block', color: '#23272f', marginRight: 6 }}>Registration deadline:</span>
+                            <span style={{ fontWeight: 700, fontSize: 15, color: '#11998e' }}>September 5, 2025</span>
+                        </li>
+                        <li style={{ display: 'flex', alignItems: 'center', background: '#f6f8fa', border: '2px solid #e3e7ef', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.067)', padding: '0.9rem 1.2rem', color: '#23272f', gap: 10 }}>
+                            <i className="fa-solid fa-calendar-days" style={{ color: '#3246d3', marginRight: 8, fontSize: 20 }}></i>
+                            <span style={{ fontWeight: 500, fontSize: 15, minWidth: 170, display: 'inline-block', color: '#23272f', marginRight: 6 }}>Conference dates:</span>
+                            <span style={{ fontWeight: 700, fontSize: 15, color: '#40cfff' }}>October 1-2, 2025</span>
+                        </li>
                     </ul>
                 </div>
             );
@@ -918,12 +905,41 @@ function App() {
 
     return (
         <div style={{ minHeight: '100vh', fontFamily: 'Open Sans, sans-serif' }}>
+            {/* Floating Brand logo at top left, fixed to viewport */}
+            <div
+                style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    zIndex: 2000,
+                    padding: '6px 18px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    height: window.innerWidth < 768 ? 45 : 90, // half height on small screens
+                    minWidth: window.innerWidth < 768 ? 45 : 90,
+                    maxWidth: window.innerWidth < 768 ? 160 : 320,
+                    pointerEvents: 'auto',
+                    transition: 'background 0.2s, height 0.2s, min-width 0.2s, max-width 0.2s',
+                }}
+                className="brand-floating-logo"
+            >
+                <img
+                    src="/src/assets/img/logo.png"
+                    alt="NCNETI'25 Logo"
+                    style={{ height: window.innerWidth < 768 ? 45 : 90, width: 'auto', objectFit: 'contain', display: 'block' }}
+                />
+            </div>
             {/* Bootstrap Navbar using React Bootstrap components */}
-            <Navbar bg="dark" variant="dark" expand="md" fixed="top" className="shadow-sm mb-0 pb-0">
-                <Container fluid>
-                    <Navbar.Brand href="#">
-                        <img src={logo} alt="NCNETI'25 Logo" style={{ height: 40, width: 'auto', marginRight: 8, filter: 'drop-shadow(0 2px 8px #0008)' }} />
-                    </Navbar.Brand>
+            <Navbar
+                bg="dark"
+                variant="dark"
+                expand="md"
+                fixed="top"
+                className="shadow-sm justify-content-end" // align content to right
+                style={{ width: '100%' }}
+            >
+                <Container fluid className="px-2 justify-content-end" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    {/* Logo removed: Navbar.Brand is no longer rendered here */}
                     <Navbar.Toggle aria-controls="main-navbar-nav" />
                     <Navbar.Collapse id="main-navbar-nav">
                         <Nav className="ms-auto mb-2 mb-md-0">

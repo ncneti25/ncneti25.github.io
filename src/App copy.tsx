@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css'
-import logo from './assets/img/logo.png';
+// import logo from './assets/img/logo.png'; // Removed unused import
 // Fix hotel image imports to match actual file paths and extensions
 import lallamaounaImg from './assets/img/hotels/lallamaouna.jpg';
 import lallamaounaPrices from './assets/img/hotels/lallamaouna-prices.svg';
@@ -45,32 +45,21 @@ function SectionContent({ section }: { section: string }) {
         case 'Home':
             const [showVideo, setShowVideo] = useState(false);
             return (
-                <div className="w-100 d-flex flex-column align-items-center mt-2 position-relative py-4"
-                    style={{
-                        background: '#fff', // Solid white background
-                        borderRadius: 12,
-                        boxShadow: '0 2px 16px #0002',
-                        minHeight: undefined,
-                        ...(window.innerWidth > 768 ? { minHeight: '60vh' } : {}),
-                    }}
-                >
-                    {/* Hero background image (now visually hidden, but kept for possible future use) */}
-                    {/* <div style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        zIndex: 0,
-                        background: 'url(/hero-bg.jpg) center/cover no-repeat',
-                        filter: 'blur(12px)',
-                        borderRadius: 12,
-                    }} /> */}
+                <div className="section">
                     {/* Logo above intro */}
-                    <div className="z-1 mt-2 mb-2">
-                        <img src="/logoHuge.png" alt="NCNETI'25 Logo" style={{ height: 200, width: 'auto' }} />
+                    <div className="section section-home-logo-row">
+                        <img
+                            src="/logoBook.png"
+                            alt="NCNETI'25 Book Logo"
+                            className="section-home-logo-img mb-2 mb-md-0"
+                        />
+                        <img
+                            src="/logoHuge.png"
+                            alt="NCNETI'25 Text Logo"
+                            className="section-home-logo-img mt-0"
+                        />
                     </div>
-                    <p className="z-1" style={{ fontFamily: 'Open Sans, sans-serif', color: '#23272f', paddingLeft: 32, paddingRight: 32 }}>
+                    <p className="section-home-intro">
                         <i className="fa fa-calendar-alt" style={{ fontSize: 16, color: '#3f5efb' }}></i> October 1-2, 2025 at the&nbsp;
                         <a
                             href="https://labstic.univ-guelma.dz/"
@@ -82,36 +71,13 @@ function SectionContent({ section }: { section: string }) {
                             LabSTIC Laboratory, University of Guelma
                         </a>
                     </p>
-                    <p className="col-11 text-center" style={{ fontFamily: 'Open Sans, sans-serif', color: '#23272f' }}>
+                    <p className="section-home-desc">
                         The LabSTIC Laboratory is pleased to announce the second edition of NCNETI'25, taking place on October 1-2, 2025. This national conference provides a platform for researchers, academics, and doctoral students to present their latest research and advancements in new educational technologies and informatics. Participants will have the opportunity to share theoretical insights, innovative methodologies, and practical applications, fostering collaboration and knowledge exchange within the academic community.
                     </p>
                     <div className="d-flex flex-column align-items-center mt-3 gap-1 z-1">
                         {/* Play Button */}
                         <div
-                            style={{
-                                width: 64,
-                                height: 64,
-                                background: 'rgba(252,70,107,0.55)',
-                                borderRadius: '50%',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                boxShadow: '0 2px 12px #0006',
-                                cursor: 'pointer',
-                                transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
-                                backdropFilter: 'blur(2px)',
-                                margin: '0 0 8px 0',
-                            }}
-                            onMouseEnter={e => {
-                                e.currentTarget.style.background = 'rgba(252,70,107,0.75)';
-                                e.currentTarget.style.transform = 'scale(1.08)';
-                                e.currentTarget.style.boxShadow = '0 4px 24px #fc466b88';
-                            }}
-                            onMouseLeave={e => {
-                                e.currentTarget.style.background = 'rgba(252,70,107,0.55)';
-                                e.currentTarget.style.transform = 'scale(1)';
-                                e.currentTarget.style.boxShadow = '0 2px 12px #0006';
-                            }}
+                            className="section-home-play-btn"
                             onClick={() => setShowVideo(true)}
                         >
                             <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
@@ -122,21 +88,10 @@ function SectionContent({ section }: { section: string }) {
                         {/* Floating YouTube Embed */}
                         {showVideo && (
                             <div
-                                style={{
-                                    position: 'fixed',
-                                    top: 0,
-                                    left: 0,
-                                    width: '100vw',
-                                    height: '100vh',
-                                    background: 'rgba(0,0,0,0.7)',
-                                    zIndex: 2000,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                }}
+                                className="section-home-video-overlay"
                                 onClick={() => setShowVideo(false)}
                             >
-                                <div style={{ position: 'relative', width: '90vw', maxWidth: 600, aspectRatio: '16/9', background: '#000', borderRadius: 8, boxShadow: '0 2px 8px #0008' }} onClick={e => e.stopPropagation()}>
+                                <div className="section-home-video-iframe-box" onClick={e => e.stopPropagation()}>
                                     <iframe
                                         width="100%"
                                         height="100%"
@@ -147,42 +102,15 @@ function SectionContent({ section }: { section: string }) {
                                         allowFullScreen
                                         style={{ borderRadius: 8 }}
                                     />
-                                    <div onClick={() => setShowVideo(false)} style={{ position: 'absolute', top: 8, right: 8, cursor: 'pointer', color: '#fff', fontSize: 28, zIndex: 10 }}>
+                                    <div onClick={() => setShowVideo(false)} className="section-home-video-close">
                                         ×
                                     </div>
                                 </div>
                             </div>
                         )}
                         {/* Call for Papers Button */}
-                        <a href="/assets/pdf/NCNETI25_CallForPaper.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', width: 'auto' }}>
-                            <div style={{
-                                marginTop: 8,
-                                marginBottom: 0,
-                                background: '#3f5efb',
-                                color: '#fff',
-                                padding: '6px 18px',
-                                borderRadius: 24,
-                                fontWeight: 600,
-                                fontSize: 15,
-                                boxShadow: '0 2px 8px #0008',
-                                textAlign: 'center',
-                                minWidth: 0,
-                                width: 'auto',
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: 6,
-                                transition: 'background 0.2s, box-shadow 0.2s',
-                                cursor: 'pointer',
-                            }}
-                                onMouseEnter={e => {
-                                    e.currentTarget.style.background = '#3246d3';
-                                    e.currentTarget.style.boxShadow = '0 4px 16px #3f5efb55';
-                                }}
-                                onMouseLeave={e => {
-                                    e.currentTarget.style.background = '#3f5efb';
-                                    e.currentTarget.style.boxShadow = '0 2px 8px #0008';
-                                }}
-                            >
+                        <a href="/assets/pdf/NCNETI25_CallForPaper.pdf" target="_blank" rel="noopener noreferrer" className="section-home-cfp-link">
+                            <div className="section-home-cfp-btn">
                                 <i className="fa-solid fa-upload" style={{ marginRight: 8, verticalAlign: 'middle', fontSize: 16 }}></i>
                                 Call for Papers
                             </div>
@@ -213,33 +141,44 @@ function SectionContent({ section }: { section: string }) {
                 { text: 'AI for Remote Monitoring and Telemedicine', icon: <i className="fa-solid fa-video" style={{ color: '#40cfff', marginRight: 8 }}></i> },
                 { text: 'Human-Computer Interaction', icon: <i className="fa-solid fa-user" style={{ color: '#40cfff', marginRight: 8 }}></i> },
                 { text: 'IT for Agriculture, Tourism and Natural Resource Management', icon: <i className="fa-solid fa-globe" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'كما نرحب بكل المشاركات باللغة العربية والخاصة بتطبيقات الاعلام الالي في ميادين اللسانيات، اللغات، المحاسبة ، الاعلام والاتصال وغيرها...', icon: <i className="fa-solid fa-language" style={{ color: '#40cfff', marginRight: 8 }}></i> },
             ];
             return (
-                <div>
-                    <h4 className="d-flex align-items-center gap-2 mb-3">
-                        <i className="fa-solid fa-book-open" style={{ fontSize: 22, color: '#40cfff' }}></i>
-                        Topics of Interest
-                    </h4>
-                    <div className="d-flex flex-wrap gap-5" style={{ maxWidth: 900 }}>
-                        <ul style={{ textAlign: 'left', flex: 1, minWidth: 250, margin: 0, paddingLeft: 24 }}>
-                            {topicsCol1.map((topic, idx) => (
-                                <li key={idx} style={{ display: 'flex', alignItems: 'center', marginBottom: 8 }}>
-                                    {topic.icon}
-                                    <span>{topic.text}</span>
-                                </li>
-                            ))}
-                        </ul>
-                        <ul style={{ textAlign: 'left', flex: 1, minWidth: 250, margin: 0, paddingLeft: 24 }}>
-                            {topicsCol2.map((topic, idx) => (
-                                <li key={idx} style={{ display: 'flex', alignItems: 'center', marginBottom: 8 }}>
-                                    {topic.icon}
-                                    <span>{topic.text}</span>
-                                </li>
-                            ))}
-                        </ul>
+                <>
+                    {/* Topics of Interest Box */}
+                    <div className="section section-topics-interest-box">
+                        <h4 className="d-flex align-items-center gap-2 section-title section-topics-title">
+                            Topics of Interest
+                        </h4>
+                        <p className="section-topics-desc">
+                            The topics listed below constitute the main areas within the scope of the conference. <br /> Submissions addressing these or closely related themes are especially encouraged.
+                        </p>
+                        <div className="d-flex flex-wrap gap-5 section-topics-list-row">
+                            <ul className="section-topics-list">
+                                {topicsCol1.map((topic, idx) => (
+                                    <li key={idx} className="section-topics-list-item">
+                                        {React.cloneElement(topic.icon, { style: { ...topic.icon.props.style, color: '#3246d3' } })}
+                                        <span>{topic.text}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                            <ul className="section-topics-list">
+                                {topicsCol2.map((topic, idx) => (
+                                    <li key={idx} className="section-topics-list-item">
+                                        {React.cloneElement(topic.icon, { style: { ...topic.icon.props.style, color: '#3246d3' } })}
+                                        <span>{topic.text}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                    {/* Arabic Special Note Box */}
+                    <div className="section section-topics-arabic-note">
+                        <i className="fa-solid fa-lightbulb section-topics-arabic-icon"></i>
+                        <span className="section-topics-arabic-text">
+                            كما نرحب بكل المشاركات باللغة العربية والخاصة بتطبيقات الاعلام الالي في ميادين اللسانيات، اللغات، المحاسبة ، الاعلام والاتصال وغيرها...
+                        </span>
+                    </div>
+                </>
             );
         case 'Important Dates':
             // New set of icons and colors for each date using Bootstrap Icons
@@ -276,17 +215,17 @@ function SectionContent({ section }: { section: string }) {
                 },
             ];
             return (
-                <div>
-                    <h4 className="d-flex align-items-center gap-2 mb-3">
-                        <i className="fa-solid fa-calendar-days" style={{ fontSize: 22, color: '#40cfff' }}></i>
+                <div className="section section-important-dates-box">
+                    <h4 className="d-flex align-items-center gap-2 section-title section-important-dates-title">
+                        <i className="fa-solid fa-calendar-days" style={{ fontSize: 22, color: '#3246d3' }}></i>
                         Important Dates
                     </h4>
-                    <ul style={{ textAlign: 'left', maxWidth: 540, margin: '0 auto', padding: 0, listStyle: 'none' }}>
+                    <ul className="section-important-dates-list">
                         {importantDates.map((item, idx) => (
-                            <li key={idx} style={{ display: 'flex', alignItems: 'center', marginBottom: 18, color: item.color }}>
-                                {item.icon}
-                                <span style={{ fontWeight: 400, fontSize: 15, minWidth: 170, display: 'inline-block', color: item.color, marginRight: 6 }}>{item.text}</span>
-                                <span style={{ fontWeight: 700, fontSize: 15, color: item.color }}>{item.date}</span>
+                            <li key={idx} className="section-important-dates-list-item">
+                                {React.cloneElement(item.icon, { style: { ...item.icon.props.style, color: '#3246d3' } })}
+                                <span className="section-important-dates-label">{item.text}</span>
+                                <span className="section-important-dates-date" style={{ color: item.color }}>{item.date}</span>
                             </li>
                         ))}
                     </ul>
@@ -294,8 +233,19 @@ function SectionContent({ section }: { section: string }) {
             );
         case 'Committees':
             return (
-                <div>
-                    <h4 className="d-flex align-items-center gap-2">
+                <div style={{ border: '2px solid #e3e7ef', borderRadius: 16, background: '#fff', boxShadow: '0 2px 16px #0002', padding: '1.1rem 0.7rem' }}>
+                    <h4 className="d-flex align-items-center gap-2 section-title"
+                        style={{
+                            marginTop: 0,
+                            marginBottom: 12,
+                            paddingBottom: 6,
+                            borderBottom: '2px solid #40cfff',
+                            background: 'rgba(64,207,255,0.07)',
+                            borderRadius: 8,
+                            fontWeight: 700,
+                            color: '#23272f',
+                        }}
+                    >
                         <i className="fa-solid fa-users" style={{ fontSize: 18, color: '#40cfff' }}></i>
                         Committees
                     </h4>
@@ -403,8 +353,19 @@ function SectionContent({ section }: { section: string }) {
             );
         case 'Venue':
             return (
-                <div>
-                    <h4 className="d-flex align-items-center gap-2">
+                <div style={{ border: '2px solid #e3e7ef', borderRadius: 16, background: '#fff', boxShadow: '0 2px 16px #0002', padding: '1.1rem 0.7rem' }}>
+                    <h4 className="d-flex align-items-center gap-2 section-title"
+                        style={{
+                            marginTop: 0,
+                            marginBottom: 12,
+                            paddingBottom: 6,
+                            borderBottom: '2px solid #40cfff',
+                            background: 'rgba(64,207,255,0.07)',
+                            borderRadius: 8,
+                            fontWeight: 700,
+                            color: '#23272f',
+                        }}
+                    >
                         <i className="fa-solid fa-location-dot" style={{ fontSize: 18, color: '#40cfff' }}></i>
                         Conference Venue
                     </h4>
@@ -441,14 +402,25 @@ function SectionContent({ section }: { section: string }) {
             );
         case 'Registration':
             return (
-                <div style={{ maxWidth: 900, margin: '0 auto' }}>
+                <div style={{ maxWidth: 900, margin: '0 auto', border: '2px solid #e3e7ef', borderRadius: 16, background: '#fff', boxShadow: '0 2px 16px #0002', padding: '1.1rem 0.7rem' }}>
+                    <h4 className="d-flex align-items-center gap-2 section-title"
+                        style={{
+                            marginTop: 0,
+                            marginBottom: 12,
+                            paddingBottom: 6,
+                            borderBottom: '2px solid #40cfff',
+                            background: 'rgba(64,207,255,0.07)',
+                            borderRadius: 8,
+                            fontWeight: 700,
+                            color: '#23272f',
+                        }}
+                    >
+                        <i className="fa-solid fa-clipboard-check" style={{ fontSize: 18, color: '#40cfff' }}></i>
+                        Registration & Fees
+                    </h4>
                     {/* Registration & Fees box, full width */}
                     <div>
                         <div className="mb-4">
-                            <h4 className="d-flex align-items-center gap-2">
-                                <i className="fa-solid fa-clipboard-check" style={{ fontSize: 18, color: '#40cfff' }}></i>
-                                Registration & Fees
-                            </h4>
                             <p style={{ marginBottom: '1rem' }}>
                                 Participation Fees include: Admission to all technical sessions, refreshments during breaks and launches, conference materials, and social program. The conference fees do not include accommodation.
                             </p>
@@ -616,19 +588,31 @@ function SectionContent({ section }: { section: string }) {
         case 'Sponsors':
             // Dynamically import supporter images using Vite's import.meta.glob
             const supporterImages = import.meta.glob('./assets/img/supporters/*.png', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
-            // Dispersed layout: 1.png (LabSTIC) and 2.png (Diwan) are wide and short, 3.png (MISM) is tall and centered
+            // Set a fixed box height and use flex to center images vertically and horizontally
+            const sponsorBoxHeight = 160; // px, same for all
             return (
-                <div>
-                    <h4 className="d-flex align-items-center gap-2">
+                <div style={{ border: '2px solid #e3e7ef', borderRadius: 16, background: '#fff', boxShadow: '0 2px 16px #0002', padding: '1.1rem 0.7rem' }}>
+                    <h4 className="d-flex align-items-center gap-2 section-title"
+                        style={{
+                            marginTop: 0,
+                            marginBottom: 12,
+                            paddingBottom: 6,
+                            borderBottom: '2px solid #40cfff',
+                            background: 'rgba(64,207,255,0.07)',
+                            borderRadius: 8,
+                            fontWeight: 700,
+                            color: '#23272f',
+                        }}
+                    >
                         <i className="fa-solid fa-award" style={{ fontSize: 18, color: '#40cfff' }}></i>
                         Sponsors & Supporters
                     </h4>
                     <p className="text-white mb-3" style={{ fontFamily: 'Open Sans, sans-serif !important' }}>
                         We gratefully acknowledge the generous support of our sponsors and partners, whose contributions help make NCNETI'25 possible.
                     </p>
-                    <div className="row g-3 justify-content-center align-items-center" style={{ marginTop: '1rem' }}>
-                        {/* LabSTIC: 1.png, wide and short */}
-                        <div className="col-12 col-md-4 d-flex align-items-center justify-content-center">
+                    <div className="row g-3 justify-content-center align-items-stretch" style={{ marginTop: '1rem' }}>
+                        {/* LabSTIC: 1.png */}
+                        <div className="col-12 col-md-4 d-flex align-items-stretch justify-content-center">
                             <div
                                 className="sponsor-card"
                                 style={{
@@ -640,7 +624,7 @@ function SectionContent({ section }: { section: string }) {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     minWidth: 180,
-                                    minHeight: 80,
+                                    height: sponsorBoxHeight,
                                     width: '100%',
                                     maxWidth: 340,
                                     transition: 'transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.4s',
@@ -648,7 +632,7 @@ function SectionContent({ section }: { section: string }) {
                                     overflow: 'hidden',
                                 }}
                                 onMouseEnter={e => {
-                                    e.currentTarget.style.transform = 'scale(1.35)';
+                                    e.currentTarget.style.transform = 'scale(1.15)';
                                     e.currentTarget.style.boxShadow = '0 12px 48px #40cfff88';
                                     e.currentTarget.style.zIndex = '10';
                                 }}
@@ -658,11 +642,11 @@ function SectionContent({ section }: { section: string }) {
                                     e.currentTarget.style.zIndex = '1';
                                 }}
                             >
-                                <img src={supporterImages['./assets/img/supporters/1.png']} alt="LabSTIC" style={{ maxHeight: 80, objectFit: 'contain', width: '100%', maxWidth: 320 }} />
+                                <img src={supporterImages['./assets/img/supporters/1.png']} alt="LabSTIC" style={{ maxHeight: sponsorBoxHeight - 24, objectFit: 'contain', width: 'auto', maxWidth: '100%' }} />
                             </div>
                         </div>
-                        {/* MISM: 3.png, tall and centered */}
-                        <div className="col-12 col-md-4 d-flex align-items-center justify-content-center">
+                        {/* MISM: 3.png */}
+                        <div className="col-12 col-md-4 d-flex align-items-stretch justify-content-center">
                             <div
                                 className="sponsor-card"
                                 style={{
@@ -674,7 +658,7 @@ function SectionContent({ section }: { section: string }) {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     minWidth: 120,
-                                    minHeight: 200,
+                                    height: sponsorBoxHeight,
                                     width: '100%',
                                     maxWidth: 220,
                                     transition: 'transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.4s',
@@ -682,7 +666,7 @@ function SectionContent({ section }: { section: string }) {
                                     overflow: 'hidden',
                                 }}
                                 onMouseEnter={e => {
-                                    e.currentTarget.style.transform = 'scale(1.35)';
+                                    e.currentTarget.style.transform = 'scale(1.15)';
                                     e.currentTarget.style.boxShadow = '0 12px 48px #40cfff88';
                                     e.currentTarget.style.zIndex = '10';
                                 }}
@@ -692,11 +676,11 @@ function SectionContent({ section }: { section: string }) {
                                     e.currentTarget.style.zIndex = '1';
                                 }}
                             >
-                                <img src={supporterImages['./assets/img/supporters/3.png']} alt="MISM" style={{ maxHeight: 200, objectFit: 'contain', width: 'auto', maxWidth: '100%' }} />
+                                <img src={supporterImages['./assets/img/supporters/3.png']} alt="MISM" style={{ maxHeight: sponsorBoxHeight - 24, objectFit: 'contain', width: 'auto', maxWidth: '100%' }} />
                             </div>
                         </div>
-                        {/* Diwan: 2.png, wide and short */}
-                        <div className="col-12 col-md-4 d-flex align-items-center justify-content-center">
+                        {/* Diwan: 2.png */}
+                        <div className="col-12 col-md-4 d-flex align-items-stretch justify-content-center">
                             <div
                                 className="sponsor-card"
                                 style={{
@@ -708,7 +692,7 @@ function SectionContent({ section }: { section: string }) {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     minWidth: 180,
-                                    minHeight: 80,
+                                    height: sponsorBoxHeight,
                                     width: '100%',
                                     maxWidth: 340,
                                     transition: 'transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.4s',
@@ -716,7 +700,7 @@ function SectionContent({ section }: { section: string }) {
                                     overflow: 'hidden',
                                 }}
                                 onMouseEnter={e => {
-                                    e.currentTarget.style.transform = 'scale(1.35)';
+                                    e.currentTarget.style.transform = 'scale(1.15)';
                                     e.currentTarget.style.boxShadow = '0 12px 48px #40cfff88';
                                     e.currentTarget.style.zIndex = '10';
                                 }}
@@ -726,7 +710,7 @@ function SectionContent({ section }: { section: string }) {
                                     e.currentTarget.style.zIndex = '1';
                                 }}
                             >
-                                <img src={supporterImages['./assets/img/supporters/2.png']} alt="Diwan" style={{ maxHeight: 80, objectFit: 'contain', width: '100%', maxWidth: 320 }} />
+                                <img src={supporterImages['./assets/img/supporters/2.png']} alt="Diwan" style={{ maxHeight: sponsorBoxHeight - 24, objectFit: 'contain', width: 'auto', maxWidth: '100%' }} />
                             </div>
                         </div>
                     </div>
@@ -734,8 +718,19 @@ function SectionContent({ section }: { section: string }) {
             );
         case 'Contact':
             return (
-                <div>
-                    <h4 className="d-flex align-items-center gap-2">
+                <div style={{ border: '2px solid #e3e7ef', borderRadius: 16, background: '#fff', boxShadow: '0 2px 16px #0002', padding: '1.1rem 0.7rem' }}>
+                    <h4 className="d-flex align-items-center gap-2 section-title"
+                        style={{
+                            marginTop: 0,
+                            marginBottom: 12,
+                            paddingBottom: 6,
+                            borderBottom: '2px solid #40cfff',
+                            background: 'rgba(64,207,255,0.07)',
+                            borderRadius: 8,
+                            fontWeight: 700,
+                            color: '#23272f',
+                        }}
+                    >
                         <i className="fa-solid fa-envelope" style={{ fontSize: 18, color: '#40cfff' }}></i>
                         Contact Us
                     </h4>
@@ -758,7 +753,7 @@ function SectionContent({ section }: { section: string }) {
                             {/* Email Box */}
                             <a
                                 href="mailto:ncnetiguelma@gmail.com"
-                                style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#ea4335', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
+                                style={{ background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px #0002', padding: '1.2rem', color: '#ea4335', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
                             >
                                 <i className="fa-regular fa-envelope" style={{ fontSize: 54, marginBottom: 8, color: '#ea4335' }}></i>
                                 <span style={{ fontWeight: 700, fontSize: 18, marginBottom: 2, color: '#ea4335' }}>Email</span>
@@ -767,7 +762,7 @@ function SectionContent({ section }: { section: string }) {
                             {/* Phone Box */}
                             <a
                                 href="tel:0698419556"
-                                style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#3f5efb', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
+                                style={{ background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px #0002', padding: '1.2rem', color: '#3f5efb', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
                             >
                                 <i className="fa-solid fa-phone" style={{ fontSize: 54, marginBottom: 8, color: '#3f5efb' }}></i>
                                 <span style={{ fontWeight: 700, fontSize: 18, marginBottom: 2, color: '#3f5efb' }}>Phone</span>
@@ -778,7 +773,7 @@ function SectionContent({ section }: { section: string }) {
                                 href="https://www.facebook.com/ncneti23"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#1877f3', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
+                                style={{ background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px #0002', padding: '1.2rem', color: '#1877f3', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
                             >
                                 <i className="fa-brands fa-facebook" style={{ fontSize: 54, marginBottom: 8, color: '#1877f3' }}></i>
                                 <span style={{ fontWeight: 700, fontSize: 18, marginBottom: 2, color: '#1877f3' }}>Facebook</span>
@@ -789,7 +784,7 @@ function SectionContent({ section }: { section: string }) {
                                 href="https://wa.me/213698419556"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#25d366', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
+                                style={{ background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px #0002', padding: '1.2rem', color: '#25d366', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
                             >
                                 <i className="fa-brands fa-whatsapp" style={{ fontSize: 54, marginBottom: 8, color: '#25d366' }}></i>
                                 <span style={{ fontWeight: 700, fontSize: 18, marginBottom: 2, color: '#25d366' }}>WhatsApp</span>
@@ -801,7 +796,22 @@ function SectionContent({ section }: { section: string }) {
             );
         case 'Submit Paper':
             return (
-                <div style={{ maxWidth: 900, margin: '0 auto' }}>
+                <div style={{ border: '2px solid #e3e7ef', borderRadius: 16, background: '#fff', boxShadow: '0 2px 16px #0002', padding: '1.1rem 0.7rem' }}>
+                    <h4 className="d-flex align-items-center gap-2 section-title"
+                        style={{
+                            marginTop: 0,
+                            marginBottom: 12,
+                            paddingBottom: 6,
+                            borderBottom: '2px solid #40cfff',
+                            background: 'rgba(64,207,255,0.07)',
+                            borderRadius: 8,
+                            fontWeight: 700,
+                            color: '#23272f',
+                        }}
+                    >
+                        <i className="fa-solid fa-upload" style={{ fontSize: 20, color: '#40cfff' }}></i>
+                        Submit Paper
+                    </h4>
                     {/* First box: Submit Paper, full width */}
                     <div className="mb-3">
                         <div className="p-3 rounded-3 shadow-sm bg-dark bg-opacity-75 border border-primary text-start">
@@ -937,21 +947,25 @@ function App() {
                 className="brand-floating-logo"
             >
                 <img
-                    src={logo}
+                    src="/src/assets/img/logo.png"
                     alt="NCNETI'25 Logo"
                     style={{ height: window.innerWidth < 768 ? 45 : 90, width: 'auto', objectFit: 'contain', display: 'block' }}
                 />
             </div>
-
             {/* Bootstrap Navbar using React Bootstrap components */}
-            <Navbar bg="dark" variant="dark" expand="md" fixed="top" className="shadow-sm mb-0 pb-0">
-                <Container fluid>
-                    {/* <Navbar.Brand href="#">
-                        <img src={logo} alt="NCNETI'25 Logo" style={{ height: 40, width: 'auto', marginRight: 8, filter: 'drop-shadow(0 2px 8px #0008)' }} />
-                    </Navbar.Brand> */}
-                    <Navbar.Toggle aria-controls="main-navbar-nav" />
-                    <Navbar.Collapse id="main-navbar-nav">
-                        <Nav className="ms-auto mb-2 mb-md-0">
+            <Navbar
+                bg="dark"
+                variant="dark"
+                expand="md"
+                fixed="top"
+                className="shadow-sm justify-content-end" // align content to right
+                style={{ width: '100%' }}
+            >
+                <Container fluid className="px-2 justify-content-end" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    {/* Logo removed: Navbar.Brand is no longer rendered here */}
+                    <Navbar.Toggle aria-controls="main-navbar-nav" className="ms-auto" style={{ marginLeft: 'auto' }} />
+                    <Navbar.Collapse id="main-navbar-nav" className="justify-content-end text-end">
+                        <Nav className="ms-auto mb-2 mb-md-0 text-end" style={{ width: '100%', justifyContent: 'flex-end', display: 'flex' }}>
                             {sections.map((section, idx) => (
                                 section === 'Submit Paper' ? (
                                     <Nav.Link
@@ -959,7 +973,7 @@ function App() {
                                         active={tab === idx}
                                         style={{ cursor: 'pointer', padding: 0, marginLeft: 8, marginRight: 8 }}
                                         onClick={() => { setTab(idx); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                                        className="d-flex align-items-center"
+                                        className="d-flex align-items-center justify-content-end"
                                     >
                                         <div
                                             style={{
@@ -997,6 +1011,7 @@ function App() {
                                         active={tab === idx}
                                         style={{ cursor: 'pointer' }}
                                         onClick={() => { setTab(idx); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                                        className="justify-content-end text-end"
                                     >
                                         {section}
                                     </Nav.Link>
@@ -1007,9 +1022,8 @@ function App() {
                 </Container>
             </Navbar>
             {/* Spacer for fixed navbar (Bootstrap md navbar is 56px, but may be taller on some screens) */}
-            <div style={{ height: 56, margin: 0, padding: 0 }}></div>
-            {/* Main content container */}
-            <div className="container py-4" style={{
+            <div style={{
+                height: 36,
                 color: '#fff',
                 fontFamily: 'Open Sans, sans-serif',
                 background: 'rgba(24, 28, 38, 0.68)', // lighter, more translucent, slightly blue-tinted dark
@@ -1019,6 +1033,8 @@ function App() {
             }}>
                 <SectionContent section={sections[tab]} />
             </div>
+            {/* Add extra bottom padding for mobile to prevent footer overlap */}
+            <div className="d-block d-md-none" style={{ height: 80 }}></div>
             {/* Footer */}
             <footer className="footer mt-auto pb-0 mb-0 py-2 bg-dark text-white fixed-bottom border-top border-secondary shadow" style={{ fontFamily: 'Open Sans, sans-serif', zIndex: 1200 }}>
                 <div className="container d-flex flex-column flex-sm-row align-items-center justify-content-between">
@@ -1067,6 +1083,9 @@ function App() {
                     </div>
                 </div>
             </footer>
+            {/* Floating logo (not part of the top bar) */}
+
+            <div style={{ height: 110 }} />
         </div>
     );
 }

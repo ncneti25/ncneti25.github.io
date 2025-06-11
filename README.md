@@ -34,4 +34,4 @@ Edit the content in the `src` directory to update conference information, sectio
 
 ## License
 
-© LabSTIC Laboratory, University of 8 Mai 1945, Guelma. All rights reserved.
+© Dr. Rochdi Boudjehem, LabSTIC Laboratory, University of 8 Mai 1945, Guelma. All rights reserved.

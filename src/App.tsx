@@ -923,7 +923,7 @@ function App() {
                 className="brand-floating-logo"
             >
                 <img
-                    src="/src/assets/img/logo.png"
+                    src="/logo.png"
                     alt="NCNETI'25 Logo"
                     style={{ height: window.innerWidth < 768 ? 45 : 90, width: 'auto', objectFit: 'contain', display: 'block' }}
                 />

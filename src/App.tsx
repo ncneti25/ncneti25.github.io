@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css'
 // Fix hotel image imports to match actual file paths and extensions
 import lallamaounaImg from './assets/img/hotels/lallamaouna.jpg';
@@ -34,23 +34,35 @@ const sections = [
     'Submit Paper',
 ];
 
+const sectionItems = [
+  ['Home', 'fa-solid fa-house'],
+  ['Topics', 'fa-solid fa-list-ul'],
+  ['Important Dates', 'fa-solid fa-calendar-alt'],
+  ['Committees', 'fa-solid fa-users'],
+  ['Venue', 'fa-solid fa-location-dot'],
+  ['Registration', 'fa-solid fa-id-card'],
+  ['Sponsors', 'fa-solid fa-handshake-angle'],
+  ['Contact', 'fa-solid fa-envelope'],
+  ['Submit Paper', 'fa-solid fa-upload'],
+];
+
 // PDF links (use correct public path for gh-pages deployment)
 const barakaPdf = '/assets/pdf/offre de services Baraka.pdf';
 const lallaMaounaPdf = '/assets/pdf/offre de services Lalla Maouna.pdf';
 const elBarakaTarifPdf = '/assets/pdf/Tarif Convention El-BARAKA.pdf';
 
-function SectionContent({ section }: { section: string }) {
+function SectionContent({ section, windowWidth }: { section: string, windowWidth: number }) {
     switch (section) {
         case 'Home':
             const [showVideo, setShowVideo] = useState(false);
             return (
                 <div className="w-100 d-flex flex-column align-items-center mt-2 position-relative py-4"
                     style={{
-                        background: '#fff', // Solid white background
+                        background: '#fff',
                         borderRadius: 12,
                         boxShadow: '0 2px 16px #0002',
                         minHeight: undefined,
-                        ...(window.innerWidth > 768 ? { minHeight: '60vh' } : {}),
+                        ...(windowWidth > 768 ? { minHeight: '60vh' } : {}),
                     }}
                 >
                     {/* Hero background image (now visually hidden, but kept for possible future use) */}
@@ -897,6 +909,13 @@ function App() {
     const [tab, setTab] = useState(0);
     const [ackOpen, setAckOpen] = useState(false);
     const [navbarExpanded, setNavbarExpanded] = useState(false);
+    // Responsive window width state
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     // Remove drawerOpen state and manual collapse logic
     // Set body background image
     document.body.style.background = 'url("/hero-bg.jpg") center/cover no-repeat fixed';
@@ -910,16 +929,17 @@ function App() {
                 style={{
                     position: 'fixed',
                     top: 0,
+                    // top: windowWidth > 1110 ? 0 : (windowWidth > 990 ? 30 : 0),
                     left: 0,
                     zIndex: 2000,
                     padding: '6px 0px',
                     display: 'flex',
                     alignItems: 'center',
-                    height: '90px', // half height on small screens
+                    height: '90px',
                     minWidth: '45px',
                     maxWidth: '320px',
                     pointerEvents: 'auto',
-                    transition: 'background 0.2s, height 0.2s, min-width 0.2s, max-width 0.2s',
+                    transition: 'background 0.2s, height 0.2s, min-width 0.2s, max-width 0.2s, top 0.2s',
                 }}
                 className="brand-floating-logo"
             >
@@ -932,7 +952,7 @@ function App() {
             <Navbar
                 bg="dark"
                 variant="dark"
-                expand="md"
+                expand="lg"
                 fixed="top"
                 expanded={navbarExpanded}
                 onToggle={(expanded) => setNavbarExpanded(expanded)}
@@ -944,61 +964,32 @@ function App() {
                     <Navbar.Toggle aria-controls="main-navbar-nav" />
                     <Navbar.Collapse id="main-navbar-nav">
                         <Nav className="ms-auto mb-2 mb-md-0">
-                            {sections.map((section, idx) => (
-                                section === 'Submit Paper' ? (                                    <Nav.Link
-                                        key={section}
-                                        active={tab === idx}
-                                        style={{ cursor: 'pointer', padding: 0, marginLeft: 8, marginRight: 8 }}
-                                        onClick={() => {
-                                            setTab(idx);
-                                            setNavbarExpanded(false);
-                                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                                        }}
-                                        className="d-flex align-items-center"
-                                    >
-                                        <div
-                                            style={{
-                                                background: '#3f5efb',
-                                                color: '#fff',
-                                                padding: '6px 18px',
-                                                borderRadius: 24,
-                                                fontWeight: 600,
-                                                fontSize: 15,
-                                                boxShadow: '0 2px 8px #0008',
-                                                minWidth: 0,
-                                                width: 'auto',
-                                                display: 'inline-flex',
-                                                alignItems: 'center',
-                                                gap: 6,
-                                                transition: 'background 0.2s, box-shadow 0.2s',
-                                                cursor: 'pointer',
-                                            }}
-                                            onMouseEnter={e => {
-                                                e.currentTarget.style.background = '#3246d3';
-                                                e.currentTarget.style.boxShadow = '0 4px 16px #3f5efb55';
-                                            }}
-                                            onMouseLeave={e => {
-                                                e.currentTarget.style.background = '#3f5efb';
-                                                e.currentTarget.style.boxShadow = '0 2px 8px #0008';
-                                            }}
-                                        >
-                                            <i className="fa-solid fa-upload" style={{ marginRight: 8, verticalAlign: 'middle', fontSize: 16 }}></i>
-                                            {section}
-                                        </div>
-                                    </Nav.Link>
-                                ) : (                                    <Nav.Link
-                                        key={section}
-                                        active={tab === idx}
-                                        style={{ cursor: 'pointer' }}
-                                        onClick={() => {
-                                            setTab(idx);
-                                            setNavbarExpanded(false);
-                                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                                        }}
-                                    >
-                                        {section}
-                                    </Nav.Link>
-                                )
+                            {sectionItems.map(([section, icon], idx) => (
+                                <Nav.Link
+                                    key={section}
+                                    active={tab === idx}
+                                    style={{
+                                        cursor: 'pointer',
+                                        textAlign: 'center',
+                                        whiteSpace: 'pre-line',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                        gap: 2,
+                                    }}
+                                    onClick={() => {
+                                        setTab(idx);
+                                        setNavbarExpanded(false);
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }}
+                                >
+                                    {(windowWidth > 990) ? <i className={icon} style={{ fontSize: 18, marginTop: 2 }}></i> : null}
+                                    <span>
+                                        {(windowWidth > 990 && windowWidth < 1110)
+                                            ? section.replace(' ', '\n')
+                                            : section}
+                                    </span>
+                                </Nav.Link>
                             ))}
                         </Nav>
                     </Navbar.Collapse>
@@ -1010,14 +1001,15 @@ function App() {
             <div className="container py-4" style={{
                 color: '#fff',
                 fontFamily: 'Open Sans, sans-serif',
-                background: 'rgba(24, 28, 38, 0.68)', // lighter, more translucent, slightly blue-tinted dark
+                background: 'rgba(24, 28, 38, 0.68)',
                 backdropFilter: 'blur(16px)',
                 borderRadius: 16,
-                boxShadow: '0 2px 8px #0008',            }}>
-                <SectionContent section={sections[tab]} />
+                boxShadow: '0 2px 8px #0008',
+            }}>
+                <SectionContent section={sections[tab]} windowWidth={windowWidth} />
             </div>
             {/* Spacer for narrow view to prevent content from being hidden behind footer */}
-            {window.innerWidth < 768 && (
+            {windowWidth < 768 && (
                 <div style={{ height: 40, margin: 0, padding: 0 }}></div>
             )}            {/* Footer */}
             <footer className="footer mt-auto pb-0 mb-0 py-2 bg-dark text-white fixed-bottom border-top border-secondary shadow" style={{ fontFamily: 'Open Sans, sans-serif', zIndex: 1200 }}>
@@ -1034,13 +1026,13 @@ function App() {
                             aria-controls="acknowledgment-box"
                             aria-expanded={ackOpen}
                         >
-                            <i className={`fa-solid ${ackOpen ? 'fa-circle-chevron-down' : 'fa-circle-chevron-up'}`} style={{ fontSize: window.innerWidth < 768 ? 14 : 20, verticalAlign: 'middle', transition: 'transform 0.2s', marginRight: 6 }}></i>
-                            {window.innerWidth < 768 ? 'Show the MS CMT' : 'Show Microsoft CMT Acknowledgment'}
-                            <i className={`fa-solid ${ackOpen ? 'fa-circle-chevron-down' : 'fa-circle-chevron-up'}`} style={{ fontSize: window.innerWidth < 768 ? 14 : 20, verticalAlign: 'middle', transition: 'transform 0.2s', marginLeft: 6 }}></i>
+                            <i className={`fa-solid ${ackOpen ? 'fa-circle-chevron-down' : 'fa-circle-chevron-up'}`} style={{ fontSize: windowWidth < 768 ? 14 : 20, verticalAlign: 'middle', transition: 'transform 0.2s', marginRight: 6 }}></i>
+                            {windowWidth < 768 ? 'Show the MS CMT' : 'Show Microsoft CMT Acknowledgment'}
+                            <i className={`fa-solid ${ackOpen ? 'fa-circle-chevron-down' : 'fa-circle-chevron-up'}`} style={{ fontSize: windowWidth < 768 ? 14 : 20, verticalAlign: 'middle', transition: 'transform 0.2s', marginLeft: 6 }}></i>
                         </button>
                     </div>
                     <div style={{ fontSize: 12, flex: '0 0 auto' }}>
-                        © <strong style={{ fontSize: 12 }}>LabSTIC {window.innerWidth < 768 ? 'Lab.' : ' Laboratory'}</strong>
+                        © <strong style={{ fontSize: 12 }}>LabSTIC {windowWidth < 768 ? 'Lab.' : ' Laboratory'}</strong>
                     </div>
                 </div>
                 <div className="container text-center small pt-1 pb-1" style={{ color: '#B7AC3F', opacity: 0.92 }}>

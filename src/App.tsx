@@ -68,7 +68,7 @@ function SectionContent({ section }: { section: string }) {
                     {/* Logo above intro */}
                     <div className="z-1 mt-2 mb-2 d-flex flex-column flex-md-row align-items-center justify-content-center gap-2 w-100">
                         <img alt="NCNETI'25 Book Logo" className="mb-2 mb-md-0" src="/logoBook.png" style={{height: 90, width: 'auto', maxWidth: '60vw', objectFit: 'contain'}} />
-                        <img alt="NCNETI'25 Text Logo" className="mt-0" src="/logoHuge.png" style={{height: 90, width: 'auto', maxWidth: '60vw', objectFit: 'contain'}} />
+                        <img alt="The Second National Conference on New Educational Technologies and Informatics (NCNETI'25)" className="mt-0" src="/logoHuge.png" style={{height: 90, width: 'auto', maxWidth: '60vw', objectFit: 'contain'}} />
                     </div>
                     <p className="z-1" style={{ fontFamily: 'Open Sans, sans-serif', color: '#23272f', paddingLeft: 32, paddingRight: 32 }}>
                         <i className="fa fa-calendar-alt" style={{ fontSize: 16, color: '#3f5efb' }}></i> October 1-2, 2025 at the&nbsp;
@@ -896,6 +896,7 @@ function SectionContent({ section }: { section: string }) {
 function App() {
     const [tab, setTab] = useState(0);
     const [ackOpen, setAckOpen] = useState(false);
+    const [navbarExpanded, setNavbarExpanded] = useState(false);
     // Remove drawerOpen state and manual collapse logic
     // Set body background image
     document.body.style.background = 'url("/hero-bg.jpg") center/cover no-repeat fixed';
@@ -911,12 +912,12 @@ function App() {
                     top: 0,
                     left: 0,
                     zIndex: 2000,
-                    padding: '6px 18px',
+                    padding: '6px 0px',
                     display: 'flex',
                     alignItems: 'center',
-                    height: window.innerWidth < 768 ? 45 : 90, // half height on small screens
-                    minWidth: window.innerWidth < 768 ? 45 : 90,
-                    maxWidth: window.innerWidth < 768 ? 160 : 320,
+                    height: '90px', // half height on small screens
+                    minWidth: '45px',
+                    maxWidth: '320px',
                     pointerEvents: 'auto',
                     transition: 'background 0.2s, height 0.2s, min-width 0.2s, max-width 0.2s',
                 }}
@@ -925,15 +926,16 @@ function App() {
                 <img
                     src="/logo.png"
                     alt="NCNETI'25 Logo"
-                    style={{ height: window.innerWidth < 768 ? 45 : 90, width: 'auto', objectFit: 'contain', display: 'block' }}
+                    style={{ height: '90px', width: 'auto', objectFit: 'contain', display: 'block' }}
                 />
-            </div>
-            {/* Bootstrap Navbar using React Bootstrap components */}
+            </div>            {/* Bootstrap Navbar using React Bootstrap components */}
             <Navbar
                 bg="dark"
                 variant="dark"
                 expand="md"
                 fixed="top"
+                expanded={navbarExpanded}
+                onToggle={(expanded) => setNavbarExpanded(expanded)}
                 className="shadow-sm justify-content-end" // align content to right
                 style={{ width: '100%' }}
             >
@@ -943,12 +945,15 @@ function App() {
                     <Navbar.Collapse id="main-navbar-nav">
                         <Nav className="ms-auto mb-2 mb-md-0">
                             {sections.map((section, idx) => (
-                                section === 'Submit Paper' ? (
-                                    <Nav.Link
+                                section === 'Submit Paper' ? (                                    <Nav.Link
                                         key={section}
                                         active={tab === idx}
                                         style={{ cursor: 'pointer', padding: 0, marginLeft: 8, marginRight: 8 }}
-                                        onClick={() => { setTab(idx); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                                        onClick={() => {
+                                            setTab(idx);
+                                            setNavbarExpanded(false);
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                        }}
                                         className="d-flex align-items-center"
                                     >
                                         <div
@@ -981,12 +986,15 @@ function App() {
                                             {section}
                                         </div>
                                     </Nav.Link>
-                                ) : (
-                                    <Nav.Link
+                                ) : (                                    <Nav.Link
                                         key={section}
                                         active={tab === idx}
                                         style={{ cursor: 'pointer' }}
-                                        onClick={() => { setTab(idx); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                                        onClick={() => {
+                                            setTab(idx);
+                                            setNavbarExpanded(false);
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                        }}
                                     >
                                         {section}
                                     </Nav.Link>
@@ -1005,32 +1013,34 @@ function App() {
                 background: 'rgba(24, 28, 38, 0.68)', // lighter, more translucent, slightly blue-tinted dark
                 backdropFilter: 'blur(16px)',
                 borderRadius: 16,
-                boxShadow: '0 2px 8px #0008',
-            }}>
+                boxShadow: '0 2px 8px #0008',            }}>
                 <SectionContent section={sections[tab]} />
             </div>
-            {/* Footer */}
+            {/* Spacer for narrow view to prevent content from being hidden behind footer */}
+            {window.innerWidth < 768 && (
+                <div style={{ height: 40, margin: 0, padding: 0 }}></div>
+            )}            {/* Footer */}
             <footer className="footer mt-auto pb-0 mb-0 py-2 bg-dark text-white fixed-bottom border-top border-secondary shadow" style={{ fontFamily: 'Open Sans, sans-serif', zIndex: 1200 }}>
-                <div className="container d-flex flex-column flex-sm-row align-items-center justify-content-between">
-                    <div style={{ fontSize: 12 }}>
+                <div className="container d-flex align-items-center justify-content-between" style={{ fontSize: 12 }}>
+                    <div style={{ fontSize: 12, flex: '0 0 auto' }}>
                         Webmaster: <a href="https://staff.univ-guelma.dz/rochdi-boudjehem" style={{ color: 'rgb(64, 207, 255)', fontWeight: 600, textDecoration: 'none', transition: 'color 0.2s', fontSize: 12 }}>Dr. Rochdi Boudjehem</a>
                     </div>
-                    <div className="d-flex align-items-center justify-content-center flex-grow-1" style={{ minWidth: 0 }}>
+                    <div className="d-flex align-items-center justify-content-center" style={{ flex: '1 1 auto' }}>
                         <button
                             className="btn btn-link btn-sm text-warning p-0 d-flex align-items-center"
-                            style={{ textDecoration: 'none', fontWeight: 600, fontSize: 12 }}
+                            style={{ textDecoration: 'none', fontWeight: 600, fontSize: 12, whiteSpace: 'nowrap' }}
                             type="button"
                             onClick={() => setAckOpen(v => !v)}
                             aria-controls="acknowledgment-box"
                             aria-expanded={ackOpen}
                         >
-                            <i className={`fa-solid ${ackOpen ? 'fa-circle-chevron-down' : 'fa-circle-chevron-up'} mx-2`} style={{ fontSize: 20, verticalAlign: 'middle', transition: 'transform 0.2s' }}></i>
-                            Show Microsoft CMT Acknowledgment
-                            <i className={`fa-solid ${ackOpen ? 'fa-circle-chevron-down' : 'fa-circle-chevron-up'} mx-2`} style={{ fontSize: 20, verticalAlign: 'middle', transition: 'transform 0.2s' }}></i>
+                            <i className={`fa-solid ${ackOpen ? 'fa-circle-chevron-down' : 'fa-circle-chevron-up'}`} style={{ fontSize: window.innerWidth < 768 ? 14 : 20, verticalAlign: 'middle', transition: 'transform 0.2s', marginRight: 6 }}></i>
+                            {window.innerWidth < 768 ? 'Show the MS CMT' : 'Show Microsoft CMT Acknowledgment'}
+                            <i className={`fa-solid ${ackOpen ? 'fa-circle-chevron-down' : 'fa-circle-chevron-up'}`} style={{ fontSize: window.innerWidth < 768 ? 14 : 20, verticalAlign: 'middle', transition: 'transform 0.2s', marginLeft: 6 }}></i>
                         </button>
                     </div>
-                    <div className="mt-2 mt-sm-0" style={{ fontSize: 12 }}>
-                        © <strong style={{ fontSize: 12 }}>LabSTIC Laboratory</strong>
+                    <div style={{ fontSize: 12, flex: '0 0 auto' }}>
+                        © <strong style={{ fontSize: 12 }}>LabSTIC {window.innerWidth < 768 ? 'Lab.' : ' Laboratory'}</strong>
                     </div>
                 </div>
                 <div className="container text-center small pt-1 pb-1" style={{ color: '#B7AC3F', opacity: 0.92 }}>

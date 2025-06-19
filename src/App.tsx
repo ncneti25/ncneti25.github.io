@@ -1023,7 +1023,7 @@ function App() {
             <footer className="footer mt-auto pb-0 mb-0 py-2 bg-dark text-white fixed-bottom border-top border-secondary shadow" style={{ fontFamily: 'Open Sans, sans-serif', zIndex: 1200 }}>
                 <div className="container d-flex align-items-center justify-content-between" style={{ fontSize: 12 }}>
                     <div style={{ fontSize: 12, flex: '0 0 auto' }}>
-                        Webmaster: <a href="https://staff.univ-guelma.dz/rochdi-boudjehem" style={{ color: 'rgb(64, 207, 255)', fontWeight: 600, textDecoration: 'none', transition: 'color 0.2s', fontSize: 12 }}>Dr. Rochdi Boudjehem</a>
+                        Webmaster: <a href="https://rochdiboudjehem.github.io/" style={{ color: 'rgb(64, 207, 255)', fontWeight: 600, textDecoration: 'none', transition: 'color 0.2s', fontSize: 12 }}>Dr. Rochdi Boudjehem</a>
                     </div>
                     <div className="d-flex align-items-center justify-content-center" style={{ flex: '1 1 auto' }}>
                         <button

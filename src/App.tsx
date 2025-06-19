@@ -976,12 +976,37 @@ function App() {
                                         flexDirection: 'column',
                                         alignItems: 'center',
                                         gap: 2,
+                                        // Match Call for Papers button style for Submit Paper
+                                        ...(section === 'Submit Paper' ? {
+                                            background: '#3f5efb',
+                                            color: '#fff',
+                                            padding: '6px 18px',
+                                            borderRadius: 10,
+                                            fontWeight: 600,
+                                            fontSize: 15,
+                                            boxShadow: '0 2px 8px #0008',
+                                            minWidth: 0,
+                                            width: 'auto',
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            gap: 6,
+                                            transition: 'background 0.2s, box-shadow 0.2s',
+                                            cursor: 'pointer',
+                                        } : {})
                                     }}
                                     onClick={() => {
                                         setTab(idx);
                                         setNavbarExpanded(false);
                                         window.scrollTo({ top: 0, behavior: 'smooth' });
                                     }}
+                                    onMouseEnter={section === 'Submit Paper' ? e => {
+                                        e.currentTarget.style.background = '#3246d3';
+                                        e.currentTarget.style.boxShadow = '0 4px 16px #3f5efb55';
+                                    } : undefined}
+                                    onMouseLeave={section === 'Submit Paper' ? e => {
+                                        e.currentTarget.style.background = '#3f5efb';
+                                        e.currentTarget.style.boxShadow = '0 2px 8px #0008';
+                                    } : undefined}
                                 >
                                     {(windowWidth > 990) ? <i className={icon} style={{ fontSize: 18, marginTop: 2 }}></i> : null}
                                     <span>

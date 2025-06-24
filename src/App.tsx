@@ -6,6 +6,7 @@ import lallamaounaPrices from './assets/img/hotels/lallamaouna-prices.svg';
 import elBarakaImg from './assets/img/hotels/el-baraka.png';
 import elBarakaPrices from './assets/img/hotels/elbaraka-prices.svg';
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import { motion } from 'framer-motion';
 
 // Add Open Sans font import
 const fontLink = document.createElement('link');
@@ -206,26 +207,26 @@ function SectionContent({ section, windowWidth }: { section: string, windowWidth
             // Define topics with Bootstrap Icons
             const topicsCol1 = [
                 { text: 'Smart Learning Environment', icon: <i className="fa-solid fa-house" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'Machine Learning & Big Data in Education', icon: <i className="fa-solid fa-microchip" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'Internet of Things (IoT) and Its Use in Education', icon: <i className="fa-solid fa-wifi" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'Machine Learning Applications in Healthcare', icon: <i className="fa-solid fa-heart-pulse" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'Artificial Intelligence & Its Application', icon: <i className="fa-solid fa-robot" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'Computer Vision & Pattern', icon: <i className="fa-solid fa-eye" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'Educational Technology', icon: <i className="fa-solid fa-book-open" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'E-learning, Mobile Learning and Intelligent Tutoring Systems', icon: <i className="fa-solid fa-tablet-screen-button" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'E-Government and E-business', icon: <i className="fa-solid fa-building" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'Intelligent and Decision Support Systems', icon: <i className="fa-solid fa-chart-bar" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+                { text: 'Machine Learning & Big Data in Education', icon: <i className="fa-solid fa-microchip" style={{ color: '#ff9800', marginRight: 8 }}></i> },
+                { text: 'Internet of Things (IoT) and Its Use in Education', icon: <i className="fa-solid fa-wifi" style={{ color: '#4caf50', marginRight: 8 }}></i> },
+                { text: 'Machine Learning Applications in Healthcare', icon: <i className="fa-solid fa-heart-pulse" style={{ color: '#e91e63', marginRight: 8 }}></i> },
+                { text: 'Artificial Intelligence & Its Application', icon: <i className="fa-solid fa-robot" style={{ color: '#9c27b0', marginRight: 8 }}></i> },
+                { text: 'Computer Vision & Pattern', icon: <i className="fa-solid fa-eye" style={{ color: '#3f51b5', marginRight: 8 }}></i> },
+                { text: 'Educational Technology', icon: <i className="fa-solid fa-book-open" style={{ color: '#00bcd4', marginRight: 8 }}></i> },
+                { text: 'E-learning, Mobile Learning and Intelligent Tutoring Systems', icon: <i className="fa-solid fa-tablet-screen-button" style={{ color: '#8bc34a', marginRight: 8 }}></i> },
+                { text: 'E-Government and E-business', icon: <i className="fa-solid fa-building" style={{ color: '#ff5722', marginRight: 8 }}></i> },
+                { text: 'Intelligent and Decision Support Systems', icon: <i className="fa-solid fa-chart-bar" style={{ color: '#607d8b', marginRight: 8 }}></i> },
             ];
             const topicsCol2 = [
-                { text: 'Health Informatics', icon: <i className="fa-solid fa-heart-pulse" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'Software Systems, Architectures, Applications and Tools', icon: <i className="fa-solid fa-diagram-project" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'Big Data Analytics', icon: <i className="fa-solid fa-chart-line" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'Natural Language Processing', icon: <i className="fa-solid fa-language" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'Social and Green Computing', icon: <i className="fa-solid fa-tree" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'AI for Remote Monitoring and Telemedicine', icon: <i className="fa-solid fa-video" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'Human-Computer Interaction', icon: <i className="fa-solid fa-user" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'IT for Agriculture, Tourism and Natural Resource Management', icon: <i className="fa-solid fa-globe" style={{ color: '#40cfff', marginRight: 8 }}></i> },
-                { text: 'كما نرحب بكل المشاركات باللغة العربية والخاصة بتطبيقات الاعلام الالي في ميادين اللسانيات، اللغات، المحاسبة ، الاعلام والاتصال وغيرها...', icon: <i className="fa-solid fa-language" style={{ color: '#40cfff', marginRight: 8 }}></i> },
+                { text: 'Health Informatics', icon: <i className="fa-solid fa-heart-pulse" style={{ color: '#e91e63', marginRight: 8 }}></i> },
+                { text: 'Software Systems, Architectures, Applications and Tools', icon: <i className="fa-solid fa-diagram-project" style={{ color: '#009688', marginRight: 8 }}></i> },
+                { text: 'Big Data Analytics', icon: <i className="fa-solid fa-chart-line" style={{ color: '#ffeb3b', marginRight: 8 }}></i> },
+                { text: 'Natural Language Processing', icon: <i className="fa-solid fa-language" style={{ color: '#673ab7', marginRight: 8 }}></i> },
+                { text: 'Social and Green Computing', icon: <i className="fa-solid fa-tree" style={{ color: '#388e3c', marginRight: 8 }}></i> },
+                { text: 'AI for Remote Monitoring and Telemedicine', icon: <i className="fa-solid fa-video" style={{ color: '#f44336', marginRight: 8 }}></i> },
+                { text: 'Human-Computer Interaction', icon: <i className="fa-solid fa-user" style={{ color: '#795548', marginRight: 8 }}></i> },
+                { text: 'IT for Agriculture, Tourism and Natural Resource Management', icon: <i className="fa-solid fa-globe" style={{ color: '#43a047', marginRight: 8 }}></i> },
+                { text: 'كما نرحب بكل المشاركات باللغة العربية والخاصة بتطبيقات الاعلام الالي في ميادين اللسانيات، اللغات، المحاسبة ، الاعلام والاتصال وغيرها...', icon: <i className="fa-solid fa-language" style={{ color: '#607d8b', marginRight: 8 }}></i> },
             ];
             return (
                 <div>
@@ -744,11 +745,11 @@ function SectionContent({ section, windowWidth }: { section: string, windowWidth
                                 href="https://maps.app.goo.gl/CkuhmH4wRwQYJTpf9"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                style={{ color: '#f7971e', fontWeight: 700, fontSize: 20, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}
+                                style={{ color: '#fff0f5', fontWeight: 700, fontSize: 20, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}
                             >
-                                <i className="fa-regular fa-map" style={{ fontSize: 54, marginBottom: 8, color: '#f7971e' }}></i>
+                                <i className="fa-regular fa-map" style={{ fontSize: 54, marginBottom: 8, color: '#fff0f5' }}></i>
                                 <span style={{ fontWeight: 700, fontSize: 18, marginBottom: 2 }}>Address</span>
-                                <span style={{ fontWeight: 500, fontSize: 16, textDecoration: 'underline', color: '#f7971e' }}>P.O.B 401 Guelma 24000 - Algeria<br />View on Google Maps</span>
+                                <span style={{ fontWeight: 500, fontSize: 16, textDecoration: 'underline', color: '#fff0f5' }}>P.O.B 401 Guelma 24000 - Algeria<br />View on Google Maps</span>
                             </a>
                         </div>
                         {/* Other contact boxes in a row */}
@@ -756,7 +757,7 @@ function SectionContent({ section, windowWidth }: { section: string, windowWidth
                             {/* Email Box */}
                             <a
                                 href="mailto:ncnetiguelma@gmail.com"
-                                style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#ea4335', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
+                                style={{ background: '#fff0f5', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#ea4335', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
                             >
                                 <i className="fa-regular fa-envelope" style={{ fontSize: 54, marginBottom: 8, color: '#ea4335' }}></i>
                                 <span style={{ fontWeight: 700, fontSize: 18, marginBottom: 2, color: '#ea4335' }}>Email</span>
@@ -765,7 +766,7 @@ function SectionContent({ section, windowWidth }: { section: string, windowWidth
                             {/* Phone Box */}
                             <a
                                 href="tel:0698419556"
-                                style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#3f5efb', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
+                                style={{ background: '#fff0f5', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#3f5efb', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
                             >
                                 <i className="fa-solid fa-phone" style={{ fontSize: 54, marginBottom: 8, color: '#3f5efb' }}></i>
                                 <span style={{ fontWeight: 700, fontSize: 18, marginBottom: 2, color: '#3f5efb' }}>Phone</span>
@@ -776,7 +777,7 @@ function SectionContent({ section, windowWidth }: { section: string, windowWidth
                                 href="https://www.facebook.com/ncneti23"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#1877f3', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
+                                style={{ background: '#fff0f5', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#1877f3', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
                             >
                                 <i className="fa-brands fa-facebook" style={{ fontSize: 54, marginBottom: 8, color: '#1877f3' }}></i>
                                 <span style={{ fontWeight: 700, fontSize: 18, marginBottom: 2, color: '#1877f3' }}>Facebook</span>
@@ -787,7 +788,7 @@ function SectionContent({ section, windowWidth }: { section: string, windowWidth
                                 href="https://wa.me/213698419556"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                style={{ background: 'rgba(30, 34, 44, 0.7)', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#25d366', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
+                                style={{ background: '#fff0f5', borderRadius: 12, boxShadow: '0 2px 8px #0008', padding: '1.2rem', color: '#25d366', flex: 1, minWidth: 220, textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: 700, fontSize: 20, gap: 4 }}
                             >
                                 <i className="fa-brands fa-whatsapp" style={{ fontSize: 54, marginBottom: 8, color: '#25d366' }}></i>
                                 <span style={{ fontWeight: 700, fontSize: 18, marginBottom: 2, color: '#25d366' }}>WhatsApp</span>
@@ -976,39 +977,20 @@ function App() {
                                         flexDirection: 'column',
                                         alignItems: 'center',
                                         gap: 2,
-                                        // Match Call for Papers button style for Submit Paper
-                                        ...(section === 'Submit Paper' ? {
-                                            background: '#3f5efb',
-                                            color: '#fff',
-                                            padding: '6px 18px',
-                                            borderRadius: 10,
-                                            fontWeight: 600,
-                                            fontSize: 15,
-                                            boxShadow: '0 2px 8px #0008',
-                                            minWidth: 0,
-                                            width: 'auto',
-                                            display: 'inline-flex',
-                                            alignItems: 'center',
-                                            gap: 6,
-                                            transition: 'background 0.2s, box-shadow 0.2s',
-                                            cursor: 'pointer',
-                                        } : {})
                                     }}
                                     onClick={() => {
                                         setTab(idx);
                                         setNavbarExpanded(false);
                                         window.scrollTo({ top: 0, behavior: 'smooth' });
                                     }}
-                                    onMouseEnter={section === 'Submit Paper' ? e => {
-                                        e.currentTarget.style.background = '#3246d3';
-                                        e.currentTarget.style.boxShadow = '0 4px 16px #3f5efb55';
-                                    } : undefined}
-                                    onMouseLeave={section === 'Submit Paper' ? e => {
-                                        e.currentTarget.style.background = '#3f5efb';
-                                        e.currentTarget.style.boxShadow = '0 2px 8px #0008';
-                                    } : undefined}
                                 >
-                                    {(windowWidth > 990) ? <i className={icon} style={{ fontSize: 18, marginTop: 2 }}></i> : null}
+                                    <motion.i
+                                        className={icon}
+                                        style={{ fontSize: 18, marginTop: 2 }}
+                                        whileHover={{ scale: 1.3, rotate: 8 }}
+                                        whileTap={{ scale: 0.95, rotate: -8 }}
+                                        transition={{ type: 'spring', stiffness: 300 }}
+                                    />
                                     <span>
                                         {(windowWidth > 990 && windowWidth < 1110)
                                             ? section.replace(' ', '\n')
@@ -1081,6 +1063,7 @@ function App() {
                         tabIndex={-1}
                     >
                         "The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support."
+
                     </div>
                 </div>
             </footer>

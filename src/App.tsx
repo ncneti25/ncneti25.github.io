@@ -991,11 +991,15 @@ function App() {
                                         whileTap={{ scale: 0.95, rotate: -8 }}
                                         transition={{ type: 'spring', stiffness: 300 }}
                                     />
-                                    <span>
+                                    <motion.span
+                                        whileHover={{ color: '#3f5efb', scale: 1.08, letterSpacing: 1 }}
+                                        transition={{ type: 'spring', stiffness: 300 }}
+                                        style={{ display: 'block', whiteSpace: 'pre-line' }}
+                                    >
                                         {(windowWidth > 990 && windowWidth < 1110)
                                             ? section.replace(' ', '\n')
                                             : section}
-                                    </span>
+                                    </motion.span>
                                 </Nav.Link>
                             ))}
                         </Nav>

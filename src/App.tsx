@@ -167,7 +167,7 @@ function SectionContent({ section, windowWidth }: { section: string, windowWidth
                             </div>
                         )}
                         {/* Call for Papers Button */}
-                        <a href="/assets/pdf/NCNETI25_CallForPaper.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', width: 'auto' }}>
+                        <a href="/assets/pdf/CallForPaper_NCNETI25.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', width: 'auto' }}>
                             <div style={{
                                 marginTop: 8,
                                 marginBottom: 0,

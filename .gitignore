@@ -22,3 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Ignore all files in public except for those needed for GitHub Pages deployment
+public/*
+!public/assets/pdf/NCNETI25_CallForPaper.pdf
+!public/favicon.ico
+!public/logo.png
+!public/logoBook.png
+!public/logoHuge.png
+!public/hero-bg.jpg
+!public/vite.svg

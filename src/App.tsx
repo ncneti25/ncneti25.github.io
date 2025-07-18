@@ -266,12 +266,20 @@ function SectionContent({ section, windowWidth }: { section: string, windowWidth
                         <li style={{ display: 'flex', alignItems: 'center', background: '#f6f8fa', border: '2px solid #e3e7ef', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.067)', padding: '0.9rem 1.2rem', color: '#23272f', gap: 10 }}>
                             <i className="fa-solid fa-upload" style={{ color: '#3246d3', marginRight: 8, fontSize: 20 }}></i>
                             <span style={{ fontWeight: 500, fontSize: 15, minWidth: 170, display: 'inline-block', color: '#23272f', marginRight: 6 }}>Submission deadline:</span>
-                            <span style={{ fontWeight: 700, fontSize: 15, color: '#fc466b' }}>August 15, 2025</span>
+                            <span>
+                                <span style={{ fontWeight: 700, fontSize: 15, color: '#999', textDecoration: 'line-through' }}>July 15, 2025</span>
+                                <span style={{ color: '#999', margin: '0 6px' }}>|</span>
+                                <span style={{ fontWeight: 700, fontSize: 15, color: '#fc466b' }}>August 15, 2025</span>
+                            </span>
                         </li>
                         <li style={{ display: 'flex', alignItems: 'center', background: '#f6f8fa', border: '2px solid #e3e7ef', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.067)', padding: '0.9rem 1.2rem', color: '#23272f', gap: 10 }}>
                             <i className="fa-solid fa-star" style={{ color: '#3246d3', marginRight: 8, fontSize: 20 }}></i>
                             <span style={{ fontWeight: 500, fontSize: 15, minWidth: 170, display: 'inline-block', color: '#23272f', marginRight: 6 }}>Notification deadline:</span>
-                            <span style={{ fontWeight: 700, fontSize: 15, color: '#f7971e' }}>August 25, 2025</span>
+                            <span>
+                                <span style={{ fontWeight: 700, fontSize: 15, color: '#999', textDecoration: 'line-through' }}>August 15, 2025</span>
+                                <span style={{ color: '#999', margin: '0 6px' }}>|</span>
+                                <span style={{ fontWeight: 700, fontSize: 15, color: '#f7971e' }}>August 25, 2025</span>
+                            </span>
                         </li>
                         <li style={{ display: 'flex', alignItems: 'center', background: '#f6f8fa', border: '2px solid #e3e7ef', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.067)', padding: '0.9rem 1.2rem', color: '#23272f', gap: 10 }}>
                             <i className="fa-solid fa-clipboard-check" style={{ color: '#3246d3', marginRight: 8, fontSize: 20 }}></i>

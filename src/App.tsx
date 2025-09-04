@@ -816,7 +816,7 @@ function SectionContent({
                 marginBottom: '1rem',
                 textAlign: 'center'
               }}>
-                Dr Meriem Kazzar
+                Dr. Meriem Kazzar
               </h5>
               {/* Speaker Image */}
               <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
@@ -826,7 +826,7 @@ function SectionContent({
                   style={{
                     width: 150,
                     height: 150,
-                    borderRadius: '50%',
+                    borderRadius: '16px',
                     objectFit: 'cover',
                     border: '3px solid #40cfff'
                   }}
@@ -849,7 +849,7 @@ function SectionContent({
                 textAlign: 'center',
                 marginBottom: '1rem'
               }}>
-                Application of AI to Preventive Medicine
+                Speaking Topic: "Application of AI to Preventive Medicine"
               </h6>
               {/* Collapsible Section */}
               <div style={{ textAlign: 'center' }}>

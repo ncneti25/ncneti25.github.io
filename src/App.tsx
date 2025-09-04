@@ -715,7 +715,7 @@ function SectionContent({
                 September 10, 2025
               </span>
               </span>
-              
+
             </li>
                         <li
               style={{
@@ -764,7 +764,7 @@ function SectionContent({
                 gap: 10,
               }}
             >
-              
+
               <i
                 className="fa-solid fa-calendar-days"
                 style={{ color: "#3246d3", marginRight: 8, fontSize: 20 }}
@@ -797,19 +797,22 @@ function SectionContent({
             <i className="fa-solid fa-microphone" style={{ fontSize: 18, color: '#40cfff' }}></i>
             Keynote Speakers
           </h4>
-          <div className="d-flex flex-column gap-4 mt-3">
+          <div className="d-flex flex-wrap justify-content-center gap-4 mt-3">
             {/* Speaker 1 - Dr Meriem Kazzar */}
             <div style={{
               background: 'rgba(30, 34, 44, 0.7)',
               borderRadius: 12,
               boxShadow: '0 2px 8px #0008',
               padding: '1.5rem',
-              color: '#fff'
+              color: '#fff',
+              flex: '1 1 300px',
+              maxWidth: '400px',
+              minWidth: '300px'
             }}>
               {/* Speaker Name */}
-              <h5 style={{ 
-                color: '#40cfff', 
-                fontWeight: 700, 
+              <h5 style={{
+                color: '#40cfff',
+                fontWeight: 700,
                 marginBottom: '1rem',
                 textAlign: 'center'
               }}>
@@ -817,9 +820,9 @@ function SectionContent({
               </h5>
               {/* Speaker Image */}
               <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-                <img 
-                  src="/assets/img/speakers/Dr.Kazzar.jpg" 
-                  alt="Dr Meriem Kazzar" 
+                <img
+                  src="/assets/img/speakers/Dr.Kazzar.jpg"
+                  alt="Dr Meriem Kazzar"
                   style={{
                     width: 150,
                     height: 150,
@@ -830,8 +833,8 @@ function SectionContent({
                 />
               </div>
               {/* Title */}
-              <p style={{ 
-                color: '#e67e22', 
+              <p style={{
+                color: '#e67e22',
                 fontWeight: 600,
                 textAlign: 'center',
                 marginBottom: '1rem',
@@ -840,8 +843,8 @@ function SectionContent({
                 Head of Maternal and Child Health Unit, EPSP Guelma
               </p>
               {/* Event Speak Title */}
-              <h6 style={{ 
-                color: '#fc466b', 
+              <h6 style={{
+                color: '#fc466b',
                 fontWeight: 700,
                 textAlign: 'center',
                 marginBottom: '1rem'
@@ -901,7 +904,7 @@ function SectionContent({
                 )}
               </div>
             </div>
-            
+
             {/* Placeholder for Speaker 2 */}
             <div style={{
               background: 'rgba(30, 34, 44, 0.7)',
@@ -909,14 +912,17 @@ function SectionContent({
               boxShadow: '0 2px 8px #0008',
               padding: '1.5rem',
               color: '#fff',
-              textAlign: 'center'
+              textAlign: 'center',
+              flex: '1 1 300px',
+              maxWidth: '400px',
+              minWidth: '300px'
             }}>
               <h5 style={{ color: '#999', fontWeight: 700 }}>
                 Speaker 2 - Coming Soon
               </h5>
               <p style={{ color: '#999' }}>Details will be announced shortly</p>
             </div>
-            
+
             {/* Placeholder for Speaker 3 */}
             <div style={{
               background: 'rgba(30, 34, 44, 0.7)',
@@ -924,7 +930,10 @@ function SectionContent({
               boxShadow: '0 2px 8px #0008',
               padding: '1.5rem',
               color: '#fff',
-              textAlign: 'center'
+              textAlign: 'center',
+              flex: '1 1 300px',
+              maxWidth: '400px',
+              minWidth: '300px'
             }}>
               <h5 style={{ color: '#999', fontWeight: 700 }}>
                 Speaker 3 - Coming Soon

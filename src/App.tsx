@@ -28,6 +28,7 @@ const sections = [
   "Home",
   "Topics",
   "Important Dates",
+  "Speakers",
   "Committees",
   "Venue",
   "Registration",
@@ -40,6 +41,7 @@ const sectionItems = [
   ["Home", "fa-solid fa-house"],
   ["Topics", "fa-solid fa-list-ul"],
   ["Important Dates", "fa-solid fa-calendar-alt"],
+  ["Speakers", "fa-solid fa-microphone"],
   ["Committees", "fa-solid fa-users"],
   ["Venue", "fa-solid fa-location-dot"],
   ["Registration", "fa-solid fa-id-card"],
@@ -785,6 +787,151 @@ function SectionContent({
               </span>
             </li>
           </ul>
+        </div>
+      );
+    case "Speakers":
+      const [expandedSpeaker, setExpandedSpeaker] = useState<number | null>(null);
+      return (
+        <div>
+          <h4 className="d-flex align-items-center gap-2">
+            <i className="fa-solid fa-microphone" style={{ fontSize: 18, color: '#40cfff' }}></i>
+            Keynote Speakers
+          </h4>
+          <div className="d-flex flex-column gap-4 mt-3">
+            {/* Speaker 1 - Dr Meriem Kazzar */}
+            <div style={{
+              background: 'rgba(30, 34, 44, 0.7)',
+              borderRadius: 12,
+              boxShadow: '0 2px 8px #0008',
+              padding: '1.5rem',
+              color: '#fff'
+            }}>
+              {/* Speaker Name */}
+              <h5 style={{ 
+                color: '#40cfff', 
+                fontWeight: 700, 
+                marginBottom: '1rem',
+                textAlign: 'center'
+              }}>
+                Dr Meriem Kazzar
+              </h5>
+              {/* Speaker Image */}
+              <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                <img 
+                  src="/assets/img/speakers/Dr.Kazzar.jpg" 
+                  alt="Dr Meriem Kazzar" 
+                  style={{
+                    width: 150,
+                    height: 150,
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    border: '3px solid #40cfff'
+                  }}
+                />
+              </div>
+              {/* Title */}
+              <p style={{ 
+                color: '#e67e22', 
+                fontWeight: 600,
+                textAlign: 'center',
+                marginBottom: '1rem',
+                fontSize: 16
+              }}>
+                Head of Maternal and Child Health Unit, EPSP Guelma
+              </p>
+              {/* Event Speak Title */}
+              <h6 style={{ 
+                color: '#fc466b', 
+                fontWeight: 700,
+                textAlign: 'center',
+                marginBottom: '1rem'
+              }}>
+                Application of AI to Preventive Medicine
+              </h6>
+              {/* Collapsible Section */}
+              <div style={{ textAlign: 'center' }}>
+                <button
+                  onClick={() => setExpandedSpeaker(expandedSpeaker === 1 ? null : 1)}
+                  style={{
+                    background: 'transparent',
+                    border: '2px solid #40cfff',
+                    color: '#40cfff',
+                    padding: '8px 16px',
+                    borderRadius: 8,
+                    cursor: 'pointer',
+                    fontSize: 14,
+                    fontWeight: 600,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    margin: '0 auto',
+                    transition: 'all 0.3s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#40cfff';
+                    e.currentTarget.style.color = '#fff';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'transparent';
+                    e.currentTarget.style.color = '#40cfff';
+                  }}
+                >
+                  {expandedSpeaker === 1 ? 'Hide Details' : 'Show Details'}
+                  <i className={`fa-solid fa-chevron-${expandedSpeaker === 1 ? 'up' : 'down'}`}></i>
+                </button>
+                {expandedSpeaker === 1 && (
+                  <div style={{
+                    marginTop: '1rem',
+                    padding: '1rem',
+                    background: 'rgba(255,255,255,0.1)',
+                    borderRadius: 8,
+                    textAlign: 'left',
+                    lineHeight: 1.6
+                  }}>
+                    <p>
+                      Prevention or public health programmes established around specific priority issues for each region and/or population, aimed at improving the health of communities with clear and defined objectives.
+                    </p>
+                    <p>
+                      Health promotion, epidemic forecasting, disease trend analysis, and the study of related phenomena necessitate the utilization of robust data and precise analytical methodologies; in this context, artificial intelligence offers significant contributions.
+                    </p>
+                    <p style={{ fontStyle: 'italic', color: '#40cfff' }}>
+                      <strong>Keywords:</strong> AI, prevention, population analysis
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+            
+            {/* Placeholder for Speaker 2 */}
+            <div style={{
+              background: 'rgba(30, 34, 44, 0.7)',
+              borderRadius: 12,
+              boxShadow: '0 2px 8px #0008',
+              padding: '1.5rem',
+              color: '#fff',
+              textAlign: 'center'
+            }}>
+              <h5 style={{ color: '#999', fontWeight: 700 }}>
+                Speaker 2 - Coming Soon
+              </h5>
+              <p style={{ color: '#999' }}>Details will be announced shortly</p>
+            </div>
+            
+            {/* Placeholder for Speaker 3 */}
+            <div style={{
+              background: 'rgba(30, 34, 44, 0.7)',
+              borderRadius: 12,
+              boxShadow: '0 2px 8px #0008',
+              padding: '1.5rem',
+              color: '#fff',
+              textAlign: 'center'
+            }}>
+              <h5 style={{ color: '#999', fontWeight: 700 }}>
+                Speaker 3 - Coming Soon
+              </h5>
+              <p style={{ color: '#999' }}>Details will be announced shortly</p>
+            </div>
+          </div>
         </div>
       );
     case "Committees":

@@ -1,0 +1,132 @@
+/* Contact Section Styles */
+.contact-container {
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  background: rgba(24, 28, 38, 0.68);
+  backdrop-filter: blur(16px);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px #0008;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.contact-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.contact-icon {
+  font-size: 18px;
+  color: #40cfff;
+}
+.contact-info-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.contact-address {
+  background: rgba(30, 34, 44, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #0008;
+  padding: 1.2rem;
+  color: #fff;
+  width: 100%;
+}
+.contact-address-link {
+  color: #fff0f5;
+  font-weight: 700;
+  font-size: 20px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.contact-address-link .fa-map {
+  font-size: 54px;
+  margin-bottom: 8px;
+  color: #fff0f5;
+}
+.contact-address-link .address-label {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+.contact-address-link .address-details {
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: underline;
+  color: #fff0f5;
+}
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .contact-methods {
+    flex-direction: row;
+  }
+}
+.contact-method {
+  background: #fff0f5;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #0008;
+  padding: 1.2rem;
+  flex: 1 1 0%;
+  min-width: 220px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+  gap: 4px;
+  color: inherit;
+}
+.contact-method .fa-envelope {
+  font-size: 54px;
+  margin-bottom: 8px;
+  color: #ea4335;
+}
+.contact-method .email-label,
+.contact-method .email-details {
+  color: #ea4335;
+}
+.contact-method .fa-phone {
+  font-size: 54px;
+  margin-bottom: 8px;
+  color: #3f5efb;
+}
+.contact-method .phone-label,
+.contact-method .phone-details {
+  color: #3f5efb;
+}
+.contact-method .fa-facebook {
+  font-size: 54px;
+  margin-bottom: 8px;
+  color: #1877f3;
+}
+.contact-method .facebook-label,
+.contact-method .facebook-details {
+  color: #1877f3;
+}
+.contact-method .fa-whatsapp {
+  font-size: 54px;
+  margin-bottom: 8px;
+  color: #25d366;
+}
+.contact-method .whatsapp-label,
+.contact-method .whatsapp-details {
+  color: #25d366;
+}
+.contact-method .method-label {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+.contact-method .method-details {
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: underline;
+}

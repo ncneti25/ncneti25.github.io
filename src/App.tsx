@@ -658,13 +658,13 @@ function SectionContent({
                     textDecoration: "line-through",
                   }}
                 >
-                  August 15, 2025 | August 25, 2025 |
+                              August 15, 2025 | August 25, 2025 | September 5, 2025
                 </span>
                 <span style={{ color: "#999", margin: "0 6px" }}><br></br></span>
                 <span
                   style={{ fontWeight: 700, fontSize: 15, color: "#f7971e" }}
                 >
-                  September 5, 2025
+                  September 13, 2025
                 </span>
               </span>
             </li>
@@ -707,12 +707,12 @@ function SectionContent({
                     textDecoration: "line-through",
                   }}
                 >
-                  September 1, 2025 |
+                September 1, 2025 | <br /> September 10, 2025
                 </span>
                 <span style={{ color: "#999", margin: "0 6px" }}><br></br></span>
 
               <span style={{ fontWeight: 700, fontSize: 15, color: "#11998e" }}>
-                September 10, 2025
+                September 18, 2025
               </span>
               </span>
 
@@ -746,9 +746,21 @@ function SectionContent({
               >
                 Camera-ready deadline:
               </span>
-
+                      <span>
+                          <span
+                              style={{
+                                  fontWeight: 700,
+                                  fontSize: 15,
+                                  color: "#999",
+                                  textDecoration: "line-through",
+                              }}
+                          >
+                              September 15, 2025
+                          </span>
+                          <span style={{ color: "#999", margin: "0 6px" }}><br></br></span>
               <span style={{ fontWeight: 700, fontSize: 15, color: "#3f5efb" }}>
-                September 15, 2025
+                September 20, 2025
+              </span>
               </span>
             </li>
             <li
@@ -798,7 +810,111 @@ function SectionContent({
             Keynote Speakers
           </h4>
           <div className="d-flex flex-wrap justify-content-center gap-4 mt-3">
-            {/* Speaker 1 - Dr Meriem Kazzar */}
+                  {/* Speaker 1 - Pr. Nabiha Azizi */}
+                  <div style={{
+                      background: 'rgba(30, 34, 44, 0.7)',
+                      borderRadius: 12,
+                      boxShadow: '0 2px 8px #0008',
+                      padding: '1.5rem',
+                      color: '#fff',
+                      flex: '1 1 300px',
+                      maxWidth: '400px',
+                      minWidth: '300px'
+                  }}>
+                      {/* Speaker Name */}
+                      <h5 style={{
+                          color: '#40cfff',
+                          fontWeight: 700,
+                          marginBottom: '1rem',
+                          textAlign: 'center'
+                      }}>
+                          Pr. Nabiha Azizi
+                      </h5>
+                      {/* Speaker Image */}
+                      <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                          <img
+                              src="/assets/img/speakers/Pr.Azizi.jpg"
+                              alt="Prof. Nabiha Azizi"
+                              style={{
+                                  width: 150,
+                                  height: 150,
+                                  borderRadius: '50%',
+                                  objectFit: 'cover',
+                                  border: '3px solid #40cfff'
+                              }}
+                          />
+                      </div>
+                      {/* Title */}
+                      <p style={{
+                          color: '#e67e22',
+                          fontWeight: 600,
+                          textAlign: 'center',
+                          marginBottom: '1rem',
+                          fontSize: 16
+                      }}>
+                          Professor, Dept. of Computer Science, Head of Research Team, LABGED Laboratory, University of Annaba.
+                      </p>
+                      {/* Event Speak Title */}
+                      <h6 style={{
+                          color: '#fc466b',
+                          fontWeight: 700,
+                          textAlign: 'center',
+                          marginBottom: '1rem'
+                      }}>
+                          Speaking Topic: <br />"When Artificial Intelligence Advances Guide Medical Choices: State and Challenges"
+                      </h6>
+                      {/* Collapsible Section */}
+                      <div style={{ textAlign: 'center' }}>
+                          <button
+                              onClick={() => setExpandedSpeaker(expandedSpeaker === 2 ? null : 2)}
+                              style={{
+                                  background: 'transparent',
+                                  border: '2px solid #40cfff',
+                                  color: '#40cfff',
+                                  padding: '8px 16px',
+                                  borderRadius: 8,
+                                  cursor: 'pointer',
+                                  fontSize: 14,
+                                  fontWeight: 600,
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  gap: 8,
+                                  margin: '0 auto',
+                                  transition: 'all 0.3s'
+                              }}
+                              onMouseEnter={(e) => {
+                                  e.currentTarget.style.background = '#40cfff';
+                                  e.currentTarget.style.color = '#fff';
+                              }}
+                              onMouseLeave={(e) => {
+                                  e.currentTarget.style.background = 'transparent';
+                                  e.currentTarget.style.color = '#40cfff';
+                              }}
+                          >
+                              {expandedSpeaker === 2 ? 'Hide Details' : 'Show Details'}
+                              <i className={`fa-solid fa-chevron-${expandedSpeaker === 2 ? 'up' : 'down'}`}></i>
+                          </button>
+                          {expandedSpeaker === 2 && (
+                              <div style={{
+                                  marginTop: '1rem',
+                                  padding: '1rem',
+                                  background: 'rgba(255,255,255,0.1)',
+                                  borderRadius: 8,
+                                  textAlign: 'left',
+                                  lineHeight: 1.6
+                              }}>
+                                  <p>
+                                      Artificial Intelligence (AI) is increasingly shaping the landscape of modern medicine, providing powerful tools to support timely and high-quality medical decision-making across diverse fields such as diagnosis, treatment planning, and patient monitoring. Recent advances in deep learning, particularly with architectures such as Generative Adversarial Networks (GANs) and Transformers, have opened new perspectives for precision medicine, yet they require intensive computational resources powered by GPUs and high-performance machines. Beyond improving diagnostic accuracy, AI now extends to predicting disease progression and even developing companion robots that assist patients in their daily care. This presentation explores the current state of AI in guiding medical choices, its transformative potential, and the challenges that must be addressed to ensure reliable, ethical, and sustainable integration into healthcare systems.
+                                  </p>
+
+                                  <p style={{ fontStyle: 'italic', color: '#40cfff' }}>
+                                      <strong>Keywords:</strong> AI, deep learning, medical decision support, GANs, Transformers, sustainable development
+                                  </p>
+                              </div>
+                          )}
+                      </div>
+                  </div>
+            {/* Speaker 2 - Dr Meriem Kazzar */}
             <div style={{
               background: 'rgba(30, 34, 44, 0.7)',
               borderRadius: 12,
@@ -821,12 +937,12 @@ function SectionContent({
               {/* Speaker Image */}
               <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
                 <img
-                  src="/assets/img/speakers/Dr.Kazzar.jpg"
+                  src="/assets/img/speakers/Dr.Kezzar.jpg"
                   alt="Dr Meriem Kazzar"
                   style={{
                     width: 150,
                     height: 150,
-                    borderRadius: '16px',
+                    borderRadius: '50%',
                     objectFit: 'cover',
                     border: '3px solid #40cfff'
                   }}
@@ -849,7 +965,7 @@ function SectionContent({
                 textAlign: 'center',
                 marginBottom: '1rem'
               }}>
-                Speaking Topic: "Application of AI to Preventive Medicine"
+                          Speaking Topic: <br /> "Application of AI to Preventive Medicine"
               </h6>
               {/* Collapsible Section */}
               <div style={{ textAlign: 'center' }}>
@@ -905,23 +1021,6 @@ function SectionContent({
               </div>
             </div>
 
-            {/* Placeholder for Speaker 2 */}
-            <div style={{
-              background: 'rgba(30, 34, 44, 0.7)',
-              borderRadius: 12,
-              boxShadow: '0 2px 8px #0008',
-              padding: '1.5rem',
-              color: '#fff',
-              textAlign: 'center',
-              flex: '1 1 300px',
-              maxWidth: '400px',
-              minWidth: '300px'
-            }}>
-              <h5 style={{ color: '#999', fontWeight: 700 }}>
-                Speaker 2 - Coming Soon
-              </h5>
-              <p style={{ color: '#999' }}>Details will be announced shortly</p>
-            </div>
 
             {/* Placeholder for Speaker 3 */}
             <div style={{

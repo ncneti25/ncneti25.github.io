@@ -914,7 +914,7 @@ function SectionContent({
                           )}
                       </div>
                   </div>
-            {/* Speaker 2 - Dr Meriem Kazzar */}
+            {/* Speaker 2 - Dr Meriem Kezzar */}
             <div style={{
               background: 'rgba(30, 34, 44, 0.7)',
               borderRadius: 12,
@@ -932,13 +932,13 @@ function SectionContent({
                 marginBottom: '1rem',
                 textAlign: 'center'
               }}>
-                Dr. Meriem Kazzar
+                Dr. Meriem Kezzar
               </h5>
               {/* Speaker Image */}
               <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
                 <img
                   src="/assets/img/speakers/Dr.Kezzar.jpg"
-                  alt="Dr Meriem Kazzar"
+                  alt="Dr Meriem Kezzar"
                   style={{
                     width: 150,
                     height: 150,
@@ -1022,7 +1022,7 @@ function SectionContent({
             </div>
 
 
-            {/* Placeholder for Speaker 3 */}
+            {/* Placeholder for Speaker 3
             <div style={{
               background: 'rgba(30, 34, 44, 0.7)',
               borderRadius: 12,
@@ -1038,7 +1038,7 @@ function SectionContent({
                 Speaker 3 - Coming Soon
               </h5>
               <p style={{ color: '#999' }}>Details will be announced shortly</p>
-            </div>
+            </div> */}
           </div>
         </div>
       );
@@ -1081,7 +1081,7 @@ function SectionContent({
                 paddingLeft: 24,
               }}
             >
-              <li>Pr. Salah ELLAGOUNE, Rector of Guelma University</li>
+              <li>Pr. Salah ELLAGOUNE, Rector of University of Guelma</li>
               <li>Pr. Athmane MEDDOUR, Dean of the MISM Faculty</li>
               <li>Pr. Hamid SERIDI, Head of the LabSTIC Laboratory</li>
             </ul>
@@ -1230,41 +1230,41 @@ function SectionContent({
                     paddingLeft: 24,
                   }}
                 >
-                  <li>Abdelkrim Amirat (Souk Ahras University)</li>
-                  <li>Abdessamed Ghomari (ESI, Algiers)</li>
-                  <li>Adel Benamira (Guelma University)</li>
-                  <li>Ali Khebizi (Guelma University)</li>
-                  <li>Ali Seridi (Guelma University)</li>
-                  <li>Amar Balla (ESI, Algiers)</li>
-                  <li>Amina Zedadra (Guelma University)</li>
-                  <li>Babahenini Mohamed Chaouki (Biskra University)</li>
-                  <li>Brahim Farou (Guelma University)</li>
-                  <li>Chemsennahar Bencheriet (Guelma University)</li>
-                  <li>Djalila Boughareb (Guelma University)</li>
-                  <li>Farid Mokhati (Oum El Bouaghi university)</li>
-                  <li>Hafed Zarzour (Souk Ahras University)</li>
-                  <li>Houda Tadjer (Guelma University)</li>
-                  <li>Karima Benhamza (Guelma University)</li>
-                  <li>Karima Boussaha (Oum El Bouaghi university)</li>
-                  <li>Khaled Halimi (Guelma University)</li>
-                  <li>Lynda Djakhdjakha (Guelma University)</li>
-                  <li>Mohamed Benmohammed (Constantine University)</li>
-                  <li>Mohamed Nadjib Kouahla (Guelma University)</li>
-                  <li>Mohamed Nemissi (Guelma University)</li>
-                  <li>Mohamed-Sedik Chebout (Oum El Bouaghi University)</li>
-                  <li>Nabila Bousbia (ESI, Algiers)</li>
-                  <li>Nadir Farah (Annaba University)</li>
-                  <li>Nadia Guerroui (Guelma University)</li>
-                  <li>Nadjette Benhamida (Guelma University)</li>
-                  <li>Okba Kazar (Biskra University)</li>
-                  <li>Ouarda Zedadra (Guelma University)</li>
-                  <li>Riad Bourbia (Guelma University)</li>
-                  <li>Rochdi Boudjehem (Guelma University)</li>
-                  <li>Samia Drissi (Souk Ahras University)</li>
-                  <li>Smaine Mazouzi (Skikda University)</li>
-                  <li>Toufik Marir (Oum El Bouaghi University)</li>
-                  <li>Yamina Bordjiba (Guelma University)</li>
-                  <li>Zineddine Kouahla (Guelma University)</li>
+                  {/* <li>Abdelkrim Amirat (University of Souk Ahras)</li> */}
+                  <li>Abdessamed Ghomari (ESI of Algiers)</li>
+                  <li>Adel Benamira (University of Guelma)</li>
+                  <li>Ali Khebizi (University of Guelma)</li>
+                  <li>Ali Seridi (University of Guelma)</li>
+                  {/* <li>Amar Balla (ESI of Algiers)</li> */}
+                  <li>Amina Zedadra (University of Guelma)</li>
+                  <li>Babahenini Mohamed Chaouki (University of Biskra)</li>
+                  <li>Brahim Farou (University of Guelma)</li>
+                  <li>Chemsennahar Bencheriet (University of Guelma)</li>
+                  <li>Djalila Boughareb (University of Guelma)</li>
+                  <li>Farid Mokhati (University of Oum El Bouaghi)</li>
+                  {/* <li>Hafed Zarzour (University of Souk Ahras)</li> */}
+                  <li>Houda Tadjer (University of Guelma)</li>
+                  <li>Karima Benhamza (University of Guelma)</li>
+                  <li>Karima Boussaha (University of Oum El Bouaghi)</li>
+                  {/* <li>Khaled Halimi (University of Guelma)</li> */}
+                  <li>Lynda Djakhdjakha (University of Guelma)</li>
+                  <li>Mohamed Benmohammed (University of Constantine)</li>
+                  <li>Mohamed Nadjib Kouahla (University of Guelma)</li>
+                  <li>Mohamed Nemissi (University of Guelma)</li>
+                  <li>Mohamed-Sedik Chebout (University of Oum El Bouaghi)</li>
+                  {/* <li>Nabila Bousbia (ESI of Algiers)</li> */}
+                  {/* <li>Nadir Farah (University of Annaba)</li> */}
+                  <li>Nadia Guerroui (University of Guelma)</li>
+                  <li>Nadjette Benhamida (University of Guelma)</li>
+                  <li>Okba Kazar (University of Biskra)</li>
+                  <li>Ouarda Zedadra (University of Guelma)</li>
+                  <li>Riad Bourbia (University of Guelma)</li>
+                  <li>Rochdi Boudjehem (University of Guelma)</li>
+                  <li>Samia Drissi (University of Souk Ahras)</li>
+                  <li>Smaine Mazouzi (University of Skikda)</li>
+                  <li>Toufik Marir (University of Oum El Bouaghi)</li>
+                  <li>Yamina Bordjiba (University of Guelma)</li>
+                  <li>Zineddine Kouahla (University of Guelma)</li>
                 </ul>
               </div>
             </div>
@@ -1472,7 +1472,7 @@ function SectionContent({
                       className="fa-solid fa-user"
                       style={{ marginRight: 6, fontSize: 18 }}
                     ></i>
-                    Student
+                    Student*
                     <br />
                     <div
                       style={{ fontWeight: 700, marginTop: 8, fontSize: 22 }}
@@ -1570,7 +1570,7 @@ function SectionContent({
                       className="fa-solid fa-user"
                       style={{ marginRight: 6, fontSize: 18 }}
                     ></i>
-                    Student
+                    Student*
                     <br />
                     <div
                       style={{ fontWeight: 700, marginTop: 8, fontSize: 22 }}
@@ -1583,9 +1583,41 @@ function SectionContent({
                   </div>
                 </div>
               </div>
+              <div style={{ display: "flex", justifyContent: "center", marginTop: "1.5rem" }}>
+                <a
+                  href="https://forms.gle/k7garEwP1bvzRuZeA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    background: "#3f5efb",
+                    color: "#fff",
+                    borderRadius: 24,
+                    padding: "10px 28px",
+                    fontWeight: 700,
+                    fontSize: 18,
+                    boxShadow: "0 2px 8px #0008",
+                    textDecoration: "none",
+                    transition: "background 0.2s, box-shadow 0.2s",
+                    display: "inline-block",
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.background = "#3246d3";
+                    e.currentTarget.style.boxShadow = "0 4px 16px #3f5efb55";
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.background = "#3f5efb";
+                    e.currentTarget.style.boxShadow = "0 2px 8px #0008";
+                  }}
+                >
+                  Register Now**
+                </a>
+              </div>
               <p style={{ marginTop: "1rem" }}>
                 * Students must provide an official certificate of their student
-                status at the moment of registration.
+                status at the moment of registration.<br />
+                <span style={{ fontWeight: 600 }}>
+                  ** The registration fee includes 3 Coffee Breaks + 2 Lunches
+                </span>
               </p>
             </div>
           </div>
@@ -2319,7 +2351,7 @@ function SectionContent({
                       }}
                     >
                       <i
-                        className="fa-solid fa-file-archive"
+                        className="fa-solid fa-file-zipper"
                         style={{ color: "#f7971e", fontSize: 20 }}
                       ></i>
                       Download CEUR-WS.org LaTeX template
@@ -2341,10 +2373,13 @@ function SectionContent({
                         marginTop: 4,
                       }}
                     >
-                      <i
-                        className="ai ai-overleaf"
+                    <i
+                        className="fa-solid fa-file-code"
                         style={{ color: "#47d147", fontSize: 22, marginTop: 1 }}
-                      ></i>
+                    ></i>
+                    <span style={{ fontWeight: 600, color: "#47d147", marginLeft: 4 }}>
+
+                    </span>
                       Work with CEUR Workshop Proceedings on Overleaf
                     </a>
                   </li>
@@ -2362,13 +2397,60 @@ function SectionContent({
                   Short Paper (Poster) Submission
                 </h5>
                 <p className="mb-2 text-start" style={{ fontSize: 15 }}>
-                  Poster submissions are for presentation only (not published in
-                  the proceedings) and may be written in English, Arabic, or
-                  French, with a maximum length of 2 pages. <br /> Templates for
-                  poster submissions will be provided at a later date. <br />{" "}
+                  Poster submissions are for presentation only and may be written in English, Arabic, or French, with a minimum length of 2 pages. <br />{" "}
                   For online poster presentations, authors are required to
                   prepare a video presentation and submit it several days before
-                  the beginning of the event.
+                              the beginning of the event.
+                              <br /> <p className="mb-1 text-start" style={{ fontSize: 15 }}>
+                                  Use the following links to download the official CEUR LaTeX
+                                  template or access it directly on Overleaf:
+                              </p>
+                              <ul className="mb-2 text-start" style={{ fontSize: 15 }}>
+                                  <li>
+                                      <a
+                                          href="/assets/templates/NCNETI25 Poster Template.zip"
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          style={{
+                                              display: "inline-flex",
+                                              alignItems: "center",
+                                              gap: 8,
+                                              color: "#f7971e",
+                                              fontWeight: 600,
+                                              fontSize: 15,
+                                              textDecoration: "none",
+                                          }}
+                                      >
+                                          <i
+                                              className="fa-solid fa-file-archive"
+                                              style={{ color: "#f7971e", fontSize: 20 }}
+                                          ></i>
+                                          Download CEUR-WS.org LaTeX template
+                                      </a>
+                                  </li>
+                                  <li>
+                                    <a
+                                        href="/assets/templates/NCNETI25-poster-template.pptx"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{
+                                            display: "inline-flex",
+                                            alignItems: "center",
+                                            gap: 8,
+                                            color: "#f7971e",
+                                            fontWeight: 600,
+                                            fontSize: 15,
+                                            textDecoration: "none",
+                                        }}
+                                    >
+                                        <i
+                                            className="fa-solid fa-file-powerpoint"
+                                            style={{ color: "#e67e22", fontSize: 20 }}
+                                        ></i>
+                                        Download NCNETI25-poster-template.pptx
+                                    </a>
+                                  </li>
+                            </ul>
                 </p>
               </div>
             </div>

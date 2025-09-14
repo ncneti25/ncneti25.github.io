@@ -1081,7 +1081,7 @@ function SectionContent({
                 paddingLeft: 24,
               }}
             >
-              <li>Pr. Salah ELLAGOUNE, Rector of University of Guelma</li>
+                      <li>Pr. Mahmoud DEBABECHE, Rector of University of Guelma</li>
               <li>Pr. Athmane MEDDOUR, Dean of the MISM Faculty</li>
               <li>Pr. Hamid SERIDI, Head of the LabSTIC Laboratory</li>
             </ul>
@@ -1583,7 +1583,7 @@ function SectionContent({
                   </div>
                 </div>
               </div>
-              <div style={{ display: "flex", justifyContent: "center", marginTop: "1.5rem" }}>
+              {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "1.5rem" }}>
                 <a
                   href="https://forms.gle/k7garEwP1bvzRuZeA"
                   target="_blank"
@@ -1611,7 +1611,7 @@ function SectionContent({
                 >
                   Register Now**
                 </a>
-              </div>
+              </div> */}
               <p style={{ marginTop: "1rem" }}>
                 * Students must provide an official certificate of their student
                 status at the moment of registration.<br />

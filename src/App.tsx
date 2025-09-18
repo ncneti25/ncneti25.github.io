@@ -1232,9 +1232,10 @@ function SectionContent({
                 >
                   {/* <li>Abdelkrim Amirat (University of Souk Ahras)</li> */}
                   <li>Abdessamed Ghomari (ESI of Algiers)</li>
-                  <li>Adel Benamira (University of Guelma)</li>
+                  {/* <li>Adel Benamira (University of Guelma)</li> */}
                   <li>Ali Khebizi (University of Guelma)</li>
                   <li>Ali Seridi (University of Guelma)</li>
+                  <li>Amel Douar (University of Setif 1)</li>
                   {/* <li>Amar Balla (ESI of Algiers)</li> */}
                   <li>Amina Zedadra (University of Guelma)</li>
                   <li>Babahenini Mohamed Chaouki (University of Biskra)</li>
@@ -1242,8 +1243,11 @@ function SectionContent({
                   <li>Chemsennahar Bencheriet (University of Guelma)</li>
                   <li>Djalila Boughareb (University of Guelma)</li>
                   <li>Farid Mokhati (University of Oum El Bouaghi)</li>
+                  <li>Fairouz Hadi (University of Setif 1)</li>
+                  <li>Fouzia Benchikha (University of Constantine2)</li>
                   {/* <li>Hafed Zarzour (University of Souk Ahras)</li> */}
                   <li>Houda Tadjer (University of Guelma)</li>
+                  <li>Karim BOUAMRANE (Université Oran1)</li>
                   <li>Karima Benhamza (University of Guelma)</li>
                   <li>Karima Boussaha (University of Oum El Bouaghi)</li>
                   {/* <li>Khaled Halimi (University of Guelma)</li> */}
@@ -1261,6 +1265,7 @@ function SectionContent({
                   <li>Riad Bourbia (University of Guelma)</li>
                   <li>Rochdi Boudjehem (University of Guelma)</li>
                   <li>Samia Drissi (University of Souk Ahras)</li>
+                  <li>Samir Hallaci (University of Guelma)</li>
                   <li>Smaine Mazouzi (University of Skikda)</li>
                   <li>Toufik Marir (University of Oum El Bouaghi)</li>
                   <li>Yamina Bordjiba (University of Guelma)</li>
@@ -1824,10 +1829,38 @@ function SectionContent({
     case "Sponsors":
       // Dynamically import supporter images using Vite's import.meta.glob
       const supporterImages = import.meta.glob(
-        "./assets/img/supporters/*.png",
+        "./assets/img/supporters/*.{png,jpg}",
         { eager: true, query: "?url", import: "default" }
       ) as Record<string, string>;
-      // Dispersed layout: 1.png (LabSTIC) and 2.png (Diwan) are wide and short, 3.png (MISM) is tall and centered
+      // 2x2 grid, 4 cards, each linkable
+      const sponsorData = [
+        // First row
+        [
+          {
+            img: supporterImages["./assets/img/supporters/1.png"],
+            alt: "LabSTIC",
+            url: "https://labstic.univ-guelma.dz/"
+          },
+          {
+            img: supporterImages["./assets/img/supporters/2.png"],
+            alt: "Faculty of MISM",
+            url: "https://fmism.univ-guelma.dz/"
+        },
+    ],
+    // Second row
+    [
+        {
+            img: supporterImages["./assets/img/supporters/3.png"],
+            alt: "Diwan Informatique",
+            url: "https://www.facebook.com/diwaninformatiqueBOUCHBOUT/"
+          },
+          {
+            img: supporterImages["./assets/img/supporters/4.jpg"],
+            alt: "Inphamedis",
+            url: "https://inphamedis.dz/"
+          },
+        ],
+      ];
       return (
         <div>
           <h4 className="d-flex align-items-center gap-2">
@@ -1845,141 +1878,69 @@ function SectionContent({
             partners, whose contributions help make NCNETI'25 possible.
           </p>
           <div
-            className="row g-3 justify-content-center align-items-center"
-            style={{ marginTop: "1rem" }}
+            style={{
+              marginTop: "2rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: 24,
+              alignItems: "center"
+            }}
           >
-            {/* LabSTIC: 1.png, wide and short */}
-            <div className="col-12 col-md-4 d-flex align-items-center justify-content-center">
-              <div
-                className="sponsor-card"
-                style={{
-                  background: "#fff",
-                  borderRadius: 12,
-                  boxShadow: "0 2px 8px #0008",
-                  padding: "0.5rem",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minWidth: 180,
-                  minHeight: 80,
-                  width: "100%",
-                  maxWidth: 340,
-                  transition:
-                    "transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.4s",
-                  cursor: "pointer",
-                  overflow: "hidden",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "scale(1.35)";
-                  e.currentTarget.style.boxShadow = "0 12px 48px #40cfff88";
-                  e.currentTarget.style.zIndex = "10";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.boxShadow = "0 2px 8px #0008";
-                  e.currentTarget.style.zIndex = "1";
-                }}
-              >
-                <img
-                  src={supporterImages["./assets/img/supporters/1.png"]}
-                  alt="LabSTIC"
-                  style={{
-                    maxHeight: 80,
-                    objectFit: "contain",
-                    width: "100%",
-                    maxWidth: 320,
-                  }}
-                />
+            {sponsorData.map((row, rowIdx) => (
+              <div key={rowIdx} style={{ display: "flex", columnGap: 100, width: "100%", justifyContent: "center" }}>
+                {row.map((s, i) => (
+                  <a
+                    key={i}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sponsor-card"
+                    style={{
+                      background: "#fff",
+                      borderRadius: 12,
+                      boxShadow: "0 2px 8px #0008",
+                      padding: "0.5rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "auto",
+                      maxWidth: 340,
+                      margin: 0,
+                      transition:
+                        "transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.4s",
+                      cursor: "pointer",
+                      overflow: "hidden",
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.transform = "scale(1.08)";
+                      e.currentTarget.style.boxShadow = "0 12px 48px #40cfff88";
+                      e.currentTarget.style.zIndex = "10";
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.transform = "scale(1)";
+                      e.currentTarget.style.boxShadow = "0 2px 8px #0008";
+                      e.currentTarget.style.zIndex = "1";
+                    }}
+                  >
+                    <img
+                      src={s.img}
+                      alt={s.alt}
+                      style={{
+                          objectFit: "contain",
+                          width:
+                              s.alt === "Diwan Informatique"
+                                  ? "40%"
+                                  : s.alt === "Inphamedis"
+                                      ? "80%"
+                                      : "100%",
+                        maxWidth: 320,
+                        height: "auto"
+                      }}
+                    />
+                  </a>
+                ))}
               </div>
-            </div>
-            {/* MISM: 3.png, tall and centered */}
-            <div className="col-12 col-md-4 d-flex align-items-center justify-content-center">
-              <div
-                className="sponsor-card"
-                style={{
-                  background: "#fff",
-                  borderRadius: 12,
-                  boxShadow: "0 2px 8px #0008",
-                  padding: "0.5rem",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minWidth: 120,
-                  minHeight: 200,
-                  width: "100%",
-                  maxWidth: 220,
-                  transition:
-                    "transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.4s",
-                  cursor: "pointer",
-                  overflow: "hidden",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "scale(1.35)";
-                  e.currentTarget.style.boxShadow = "0 12px 48px #40cfff88";
-                  e.currentTarget.style.zIndex = "10";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.boxShadow = "0 2px 8px #0008";
-                  e.currentTarget.style.zIndex = "1";
-                }}
-              >
-                <img
-                  src={supporterImages["./assets/img/supporters/3.png"]}
-                  alt="MISM"
-                  style={{
-                    maxHeight: 200,
-                    objectFit: "contain",
-                    width: "auto",
-                    maxWidth: "100%",
-                  }}
-                />
-              </div>
-            </div>
-            {/* Diwan: 2.png, wide and short */}
-            <div className="col-12 col-md-4 d-flex align-items-center justify-content-center">
-              <div
-                className="sponsor-card"
-                style={{
-                  background: "#fff",
-                  borderRadius: 12,
-                  boxShadow: "0 2px 8px #0008",
-                  padding: "0.5rem",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minWidth: 180,
-                  minHeight: 80,
-                  width: "100%",
-                  maxWidth: 340,
-                  transition:
-                    "transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.4s",
-                  cursor: "pointer",
-                  overflow: "hidden",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "scale(1.35)";
-                  e.currentTarget.style.boxShadow = "0 12px 48px #40cfff88";
-                  e.currentTarget.style.zIndex = "10";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.boxShadow = "0 2px 8px #0008";
-                  e.currentTarget.style.zIndex = "1";
-                }}
-              >
-                <img
-                  src={supporterImages["./assets/img/supporters/2.png"]}
-                  alt="Diwan"
-                  style={{
-                    maxHeight: 80,
-                    objectFit: "contain",
-                    width: "100%",
-                    maxWidth: 320,
-                  }}
-                />
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       );

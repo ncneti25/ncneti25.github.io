@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import ProgramPDF from "./assets/pdf/Program of NCNETI'25.pdf";
 // Fix hotel image imports to match actual file paths and extensions
 import lallamaounaImg from "./assets/img/hotels/lallamaouna.jpg";
-import lallamaounaPrices from "./assets/img/hotels/lallamaouna-prices.svg";
 import elBarakaImg from "./assets/img/hotels/el-baraka.png";
-import elBarakaPrices from "./assets/img/hotels/elbaraka-prices.svg";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { motion } from "framer-motion";
 
@@ -28,6 +27,7 @@ const sections = [
   "Home",
   "Topics",
   "Important Dates",
+  "Program",
   "Speakers",
   "Committees",
   "Venue",
@@ -41,6 +41,7 @@ const sectionItems = [
   ["Home", "fa-solid fa-house"],
   ["Topics", "fa-solid fa-list-ul"],
   ["Important Dates", "fa-solid fa-calendar-alt"],
+  ["Program", "fa-solid fa-calendar-days"],
   ["Speakers", "fa-solid fa-microphone"],
   ["Committees", "fa-solid fa-users"],
   ["Venue", "fa-solid fa-location-dot"],
@@ -49,11 +50,6 @@ const sectionItems = [
   ["Contact", "fa-solid fa-envelope"],
   ["Submit Paper", "fa-solid fa-upload"],
 ];
-
-// PDF links (use correct public path for gh-pages deployment)
-const barakaPdf = "/assets/pdf/offre de services Baraka.pdf";
-const lallaMaounaPdf = "/assets/pdf/offre de services Lalla Maouna.pdf";
-const elBarakaTarifPdf = "/assets/pdf/Tarif Convention El-BARAKA.pdf";
 
 function SectionContent({
   section,
@@ -801,6 +797,66 @@ function SectionContent({
           </ul>
         </div>
       );
+    case "Program":
+      return (
+        <div style={{ width: '100%', maxWidth: 'none' }}>
+          <h4 className="d-flex align-items-center gap-2 mb-4">
+            <i className="fa-solid fa-calendar-days" style={{ fontSize: 18, color: '#40cfff' }}></i>
+            Program of NCNETI'25
+            <a
+              href={ProgramPDF}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                marginLeft: 16,
+                color: "#cacee3ff",
+                fontWeight: 600,
+                textDecoration: "none",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                fontSize: 15,
+              }}
+            >
+              <i className="fa-solid fa-download" style={{ fontSize: 18 }}></i>
+              Download PDF
+            </a>
+          </h4>
+          <div
+            style={{
+              background: '#fff',
+              borderRadius: 12,
+              boxShadow: '0 2px 8px #0008',
+              padding: '0.25rem',
+              width: '60vw',
+              maxWidth: 'none',
+              overflow: 'auto',
+              position: 'relative',
+            //   left: '50%',
+            //   transform: 'translateX(-50%)',
+            //   marginLeft: '25vw',
+            //   marginRight: '-25vw'
+            }}
+          >
+            <iframe
+              src="/Program of NCNETI'25.htm"
+              style={{
+                width: '100%',
+                height: '95vh',
+                minHeight: '900px',
+                border: 'none',
+                borderRadius: '8px'
+              }}
+              title="NCNETI'25 Conference Program"
+            />
+            {/* <div className="mt-3 text-center">
+              <p style={{ color: '#666', fontSize: '14px', fontStyle: 'italic' }}>
+                Complete conference program with all sessions, presentations, and speaker details.
+              </p>
+            </div> */}
+          </div>
+        </div>
+      );
     case "Speakers":
       const [expandedSpeaker, setExpandedSpeaker] = useState<number | null>(null);
       return (
@@ -965,7 +1021,7 @@ function SectionContent({
                 textAlign: 'center',
                 marginBottom: '1rem'
               }}>
-                          Speaking Topic: <br /> "Application of AI to Preventive Medicine"
+                          Speaking Topic: <br /> "SEMEP: Description and Missions"
               </h6>
               {/* Collapsible Section */}
               <div style={{ textAlign: 'center' }}>
@@ -1007,12 +1063,12 @@ function SectionContent({
                     textAlign: 'left',
                     lineHeight: 1.6
                   }}>
-                    <p>
+                    {/* <p>
                       Prevention or public health programmes established around specific priority issues for each region and/or population, aimed at improving the health of communities with clear and defined objectives.
                     </p>
                     <p>
                       Health promotion, epidemic forecasting, disease trend analysis, and the study of related phenomena necessitate the utilization of robust data and precise analytical methodologies; in this context, artificial intelligence offers significant contributions.
-                    </p>
+                    </p> */}
                     <p style={{ fontStyle: 'italic', color: '#40cfff' }}>
                       <strong>Keywords:</strong> AI, prevention, population analysis
                     </p>
@@ -1160,7 +1216,7 @@ function SectionContent({
                   <li>Dr. Houda TADJER</li>
                   <li>Dr. Asma BOUDRIA</li>
                   <li>Miss. Madiha KHAROUBI</li>
-                  <li>Mr. Abdelbacet BRAHMIA</li>
+                  {/* <li>Mr. Abdelbacet BRAHMIA</li> */}
                 </ul>
               </div>
             </div>
@@ -1704,7 +1760,7 @@ function SectionContent({
                       https://lalla-maouna-hotel.com/
                     </a>
                   </p>
-                  <p style={{ textAlign: "center" }}>
+                  {/* <p style={{ textAlign: "center" }}>
                     Reduced fees are: <br />
                     <img
                       src={lallamaounaPrices}
@@ -1726,7 +1782,7 @@ function SectionContent({
                         Service Offering...
                       </a>
                     </strong>
-                  </p>
+                  </p> */}
                 </div>
                 {/* El-Baraka Thermal Complex */}
                 <div
@@ -1786,7 +1842,7 @@ function SectionContent({
                       reservation@complexe-elbaraka.com
                     </a>
                   </p>
-                  <p style={{ textAlign: "center" }}>
+                  {/* <p style={{ textAlign: "center" }}>
                     Reduced fees Including hammam (thermal bath) and breakfast
                     are: <br />
                     <img
@@ -1819,7 +1875,7 @@ function SectionContent({
                         Service Offering...
                       </a>
                     </strong>
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>

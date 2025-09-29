@@ -1063,12 +1063,12 @@ function SectionContent({
                     textAlign: 'left',
                     lineHeight: 1.6
                   }}>
-                    {/* <p>
+                    <p>
                       Prevention or public health programmes established around specific priority issues for each region and/or population, aimed at improving the health of communities with clear and defined objectives.
                     </p>
                     <p>
                       Health promotion, epidemic forecasting, disease trend analysis, and the study of related phenomena necessitate the utilization of robust data and precise analytical methodologies; in this context, artificial intelligence offers significant contributions.
-                    </p> */}
+                    </p>
                     <p style={{ fontStyle: 'italic', color: '#40cfff' }}>
                       <strong>Keywords:</strong> AI, prevention, population analysis
                     </p>
@@ -2480,7 +2480,7 @@ function SectionContent({
 }
 
 function App() {
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState(3); // Start with Program section (index 3)
   const [ackOpen, setAckOpen] = useState(false);
   const [navbarExpanded, setNavbarExpanded] = useState(false);
   // Responsive window width state

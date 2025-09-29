@@ -839,7 +839,7 @@ function SectionContent({
             }}
           >
             <iframe
-              src="/Program of NCNETI25.htm"
+              src="/assets/Program of NCNETI25.htm"
               style={{
                 width: '100%',
                 height: '95vh',

@@ -1291,7 +1291,9 @@ function SectionContent({
                   {/* <li>Adel Benamira (University of Guelma)</li> */}
                   <li>Ali Khebizi (University of Guelma)</li>
                   <li>Ali Seridi (University of Guelma)</li>
+                  <li>Ali Seridi (University of Guelma)</li>
                   <li>Amel Douar (University of Setif 1)</li>
+                  <li>Asma Boudria (University of Guelma)</li>
                   {/* <li>Amar Balla (ESI of Algiers)</li> */}
                   <li>Amina Zedadra (University of Guelma)</li>
                   <li>Babahenini Mohamed Chaouki (University of Biskra)</li>
@@ -1303,6 +1305,7 @@ function SectionContent({
                   <li>Fouzia Benchikha (University of Constantine2)</li>
                   {/* <li>Hafed Zarzour (University of Souk Ahras)</li> */}
                   <li>Houda Tadjer (University of Guelma)</li>
+                  <li>Hassina Bouressace (University of Guelma)</li>
                   <li>Karim BOUAMRANE (Université Oran1)</li>
                   <li>Karima Benhamza (University of Guelma)</li>
                   <li>Karima Boussaha (University of Oum El Bouaghi)</li>
@@ -1324,6 +1327,7 @@ function SectionContent({
                   <li>Samir Hallaci (University of Guelma)</li>
                   <li>Smaine Mazouzi (University of Skikda)</li>
                   <li>Toufik Marir (University of Oum El Bouaghi)</li>
+                  <li>Wafa LOUAFI (University of Guelma)</li>
                   <li>Yamina Bordjiba (University of Guelma)</li>
                   <li>Zineddine Kouahla (University of Guelma)</li>
                 </ul>
